@@ -7,19 +7,12 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table (name = "periodical")
+@Table (name = "PERIODICAL")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Periodical {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "periodical_seq")
-    @SequenceGenerator(
-            name = "periodical_seq",
-            sequenceName = "periodical_seq",
-            initialValue = 1,
-            allocationSize = 1
-
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String type;

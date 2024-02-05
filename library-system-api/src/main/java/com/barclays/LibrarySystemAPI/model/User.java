@@ -9,19 +9,13 @@ import lombok.NonNull;
 import java.util.List;
 
 @Entity
-@Table(name = "user_t")
+@Table(name = "USER")
 @Data
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_t_seq")
-    @SequenceGenerator(
-            name = "user_t_seq",
-            sequenceName = "user_t_seq",
-            initialValue = 1,
-            allocationSize = 1
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    )
     private  Long id;
     private String name;
     @NonNull

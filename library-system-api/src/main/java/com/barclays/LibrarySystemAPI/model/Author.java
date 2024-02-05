@@ -10,18 +10,13 @@ import java.util.List;
 
 
 @Entity
+@Table (name = "AUTHOR")
 @Data
 @NoArgsConstructor
 public class Author {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_seq")
-    @SequenceGenerator(
-            name = "author_seq",
-            sequenceName = "author_seq",
-            initialValue = 1,
-            allocationSize = 1
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    )
     private  Long id;
     private String name;
 

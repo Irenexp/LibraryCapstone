@@ -5,19 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "address_t")
+@Entity(name = "ADDRESS")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_t_seq")
-    @SequenceGenerator(
-            name = "address_t_seq",
-            sequenceName = "address_t_seq",
-            initialValue = 1,
-            allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
+
     private String lineOne;
     private String city;
     private String postCode;

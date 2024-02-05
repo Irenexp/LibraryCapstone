@@ -7,30 +7,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "reservedItem")
+@Table(name = "RESERVEDITEM")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReservedItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reserved_seq")
-    @SequenceGenerator(
-            name = "reserved_seq",
-            sequenceName = "reserved_seq",
-            initialValue = 100,
-            allocationSize = 1
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    )
     private Long id;
     @Enumerated(EnumType.STRING)
-    ItemType  itemType;
+    ItemType itemType;
     private String date;
-    private int period;
+    private int borrowing_period;
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name ="user_id", referencedColumnName = "id",nullable = false )
-   private User user;
-
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private User user;
 
 }

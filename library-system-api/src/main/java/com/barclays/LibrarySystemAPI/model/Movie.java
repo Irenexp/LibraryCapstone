@@ -6,22 +6,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table (name = "movie")
+@Table (name = "MOVIE")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Movie {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movie_seq")
-    @SequenceGenerator(
-            name = "movie_seq",
-            sequenceName = "movie_seq",
-            initialValue = 1,
-            allocationSize = 1
-
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
+
     private String title;
     private String leadActors;
     private String director;

@@ -9,19 +9,13 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table(name = "book")
+@Table(name = "BOOK")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Book{
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_seq")
-    @SequenceGenerator(
-            name = "book_seq",
-            sequenceName = "book_seq",
-            initialValue = 1,
-            allocationSize = 1
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    )
     private  Long id;
     private String title;
 
@@ -45,4 +39,5 @@ public class Book{
         this.isAvailable = isAvailable;
     }
 }
+
 
