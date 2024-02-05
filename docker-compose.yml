@@ -1,20 +1,20 @@
 version: '3'
 
 services:
-  library-system-ui:
-    build:
-      context: ./library-system-ui
-    ports:
-      - "3000:3000"
+ library-system-ui:
+   build:
+     context: ./library-system-ui
+   ports:
+     - "3000:3000"
 
-  library-system-api:
+ library-system-api:
      build:
         context: ./library-system-api
      ports:
       - "8080:8080"
 
 
-  mysql-db:
+ mysql-db:
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: some_pass
