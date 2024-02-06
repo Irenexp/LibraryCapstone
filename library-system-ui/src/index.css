@@ -14,10 +14,15 @@ code {
 
 .App {
   text-align: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Fit the app to the viewport height */
 }
 
 .navbar {
   display: flex;
+  height: 10vh;
   justify-content: space-between;
   align-items: center;
   background-color: #15182e;

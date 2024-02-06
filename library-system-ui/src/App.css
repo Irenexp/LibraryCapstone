@@ -1,15 +1,15 @@
 .App {
   text-align: center;
-  overflow: hidden; 
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh; 
 }
 
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,12 +25,13 @@
 
 .content-container {
   display: flex;
-  height: calc(100vh - 50px); /* Adjust 50px to the actual height of your navbar */
+  flex-grow: 1;
+  height: calc(70vh - 50px); /* Adjust 50px to the actual height of your navbar */
 }
 
 .welcome-text {
   flex: 1;
-  padding: 20px; /* Adjust as needed */
+  padding: 20px; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,20 +40,20 @@
 
 .library-image {
   flex: 1;
-  overflow: hidden; /* In case the image is too tall */
+  overflow: hidden;
 }
 
 .library-image img {
   height: 100%;
   width: auto;
-  object-fit: cover; /* This will cover the div without stretching the image */
+  object-fit: cover; /
 }
 
 .block {
   display: flex;
   justify-content: center; /* Horizontal centering */
   align-items: center; /* Vertical centering */
-  height: 100px; /* Example height, adjust as needed */
+  height: 10vh;
   background-color: #15182e/* Example background color */
 }
 .footer-content {
