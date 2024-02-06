@@ -1,26 +1,36 @@
 import './App.css';
 import React, {useState, useEffect} from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Books from './Books';
+import Movies from './Movies';
+import Periodicals from './Periodicals';
 
 
 const App = () => {
   return (
-    <div className="App">
-      <NavBar />
-      <MainContent/>
-      <Footer/>
-    </div>
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<MainContent />} />  // Home route shows MainContent
+          <Route path="/books" element={<Books />} />  // Books route
+          <Route path="/movies" element={<Movies />} />  // Movies route
+          <Route path="/periodicals" element={<Periodicals />} />  // Periodicals route
+        </Routes>
+        <Footer />
+      </div>
   );
 }
+
 
 const NavBar = () => {
   return (
     <div className="navbar">
       <div className="logo">Library</div>
       <div className="nav-items">
-        <a href="#home">Home</a>
-        <a href="#books">Books</a>
-        <a href="#movies">Movies</a>
-        <a href="#periodicals">Periodicals</a>
+        <Link to="/">Home</Link>
+        <Link to="/books">Books</Link>
+        <Link to="/movies">Movies</Link>
+        <Link to="/periodicals">Periodicals</Link>
       </div>
       <SearchBar />
       <UserAccount />
@@ -75,7 +85,7 @@ return (
   <footer>
     <div className="block">
     <div className="footer-content">
-          <span classname = "footer-text">&copy; TWG | {currentDate.getFullYear()}</span> 
+          <span classname = "footer-text">&copy; OLS | {currentDate.getFullYear()}</span> 
           <span classname = "footer-time"> {currentDate.toLocaleString()}</span>
        </div>
        </div>
