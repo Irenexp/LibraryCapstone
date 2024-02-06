@@ -1,17 +1,11 @@
 .App {
   text-align: center;
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -28,11 +22,40 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.content-container {
+  display: flex;
+  height: calc(100vh - 50px); /* Adjust 50px to the actual height of your navbar */
+}
+
+.welcome-text {
+  flex: 1;
+  padding: 20px; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Align text to the left */
+}
+
+.library-image {
+  flex: 1;
+  overflow: hidden; /* In case the image is too tall */
+}
+
+.library-image img {
+  height: 100%;
+  width: auto;
+  object-fit: cover; /* This will cover the div without stretching the image */
+}
+
+.block {
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
+  height: 100px; /* Example height, adjust as needed */
+  background-color: #15182e/* Example background color */
+}
+.footer-content {
+  align-items: center;
+  color: aliceblue;
 }

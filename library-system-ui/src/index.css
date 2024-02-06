@@ -11,3 +11,41 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #15182e;
+  color: white;
+  padding: 10px;
+}
+
+.nav-items a {
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.search-bar input {
+  padding: 5px;
+}
+
+.search-bar button {
+  padding: 5px;
+}
+
+.user-account {
+  padding: 10px;
+}
+
+.main-content h1 {
+  color: #333;
+}
+
+
+
