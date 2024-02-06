@@ -12,8 +12,8 @@ services:
         context: ./library-system-api
      ports:
       - "8080:8080"
-     depends: 
-        mysql-db 
+     depends_on: 
+      -  mysql-db 
 
 
  mysql-db:
@@ -26,3 +26,8 @@ services:
     ports:
       - "3306:3306"
     command: --lower_case_table_names=1
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+ mysql-data:

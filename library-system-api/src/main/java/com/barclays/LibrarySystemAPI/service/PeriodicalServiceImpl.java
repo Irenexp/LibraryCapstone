@@ -1,5 +1,6 @@
 package com.barclays.LibrarySystemAPI.service;
 
+
 import com.barclays.LibrarySystemAPI.model.Periodical;
 import com.barclays.LibrarySystemAPI.repository.PeriodicalRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -11,14 +12,16 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class PeriodicalServiceImpl implements PeriodicalService{
+public class PeriodicalServiceImpl implements PeriodicalService {
 
     @Autowired
     private PeriodicalRepository periodicalRepository;
+
     @Override
     public List<Periodical> findAllPeriodicals() {
-        List<Periodical> periodicalList = new ArrayList<>();
-        periodicalRepository.findAll().forEach(periodicalList :: add);
-        return periodicalList;
+        List<Periodical> periodicals = new ArrayList<>();
+        Iterable<Periodical> periodicalIts = periodicalRepository.findAll();
+        periodicalIts.forEach(periodicals::add);
+        return periodicals;
     }
 }
