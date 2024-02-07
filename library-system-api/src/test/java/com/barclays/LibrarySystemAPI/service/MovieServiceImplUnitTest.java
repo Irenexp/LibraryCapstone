@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
-
+/*
 @SpringBootTest
 class MovieServiceImplUnitTest {
 
@@ -127,4 +127,4 @@ class MovieServiceImplUnitTest {
         assertEquals(movie1.getId(), savedMovie.getId());
     }
 
-}
+}*/

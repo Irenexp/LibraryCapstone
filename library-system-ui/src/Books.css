@@ -1,0 +1,77 @@
+.main-container {
+    display: flex;
+    flex-wrap: nowrap; /* Keep this as nowrap to ensure side-by-side layout */
+  }
+
+  .filter-container {
+    flex: 0 0 20%;
+    height: calc(100vh - 20px);
+    overflow-y: auto;
+    border: 1px solid #d3d3d3; /* Light grey border added here */
+    /* Additional styling for padding or margin as needed */
+  }
+  
+  /* Bootstrap dropdown button customization */
+  .dropdown-toggle {
+    background-color: #00008b; /* Dark blue background for the dropdown button */
+    color: white; /* White text color for contrast */
+    border-color: #00008b; /* Dark blue border for the dropdown button */
+  }
+
+.availability-drpdw .dropdown-toggle,
+.genre-drpdw .dropdown-toggle,
+.author-drpdw .dropdown-toggle {
+  background-color: #00008b !important; /* Dark blue background */
+  border: 1px solid #00008b !important; /* Dark blue border */
+}
+
+/* You may also want to add styles for hover, focus, and active states */
+.availability-drpdw .dropdown-toggle:hover,
+.genre-drpdw .dropdown-toggle:hover,
+.author-drpdw .dropdown-toggle:hover,
+.availability-drpdw .dropdown-toggle:focus,
+.genre-drpdw .dropdown-toggle:focus,
+.author-drpdw .dropdown-toggle:focus {
+  background-color: #0000cd !important; /* Slightly lighter blue for hover/focus */
+}
+  
+  /* Ensure this selector is more specific or add !important to override default styles if necessary */
+  .dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 0, 139, 0.5); /* Focus shadow in dark blue */
+  }
+  
+  .books-container {
+    flex: 1; /* Fill the remaining space */
+    height: calc(100vh - 20px); /* Match filter container height */
+    overflow-y: auto; /* Scrollable container for books */
+    padding: 20px;
+  }
+  
+  .books-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px; /* Adjust gap to your preference */
+  }
+  
+  /* Style for each book card to ensure two per row */
+  .card-container {
+    width: calc(50% - 20px); /* Subtract the gap from the total width */
+    margin: 10px; /* Adjust margin to your preference */
+    /* Other styles for the card */
+  }
+
+
+  
+  @media (max-width: 768px) {
+    .main-container {
+      flex-direction: column;
+    }
+
+  }
+  
+  /* Apply additional responsive adjustments as necessary */
+  
+  
+  /* Rest of your styles */
+  
