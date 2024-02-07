@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MoviesCard from "./MoviesCard";
+import "./Movies.css";
 import styled from "styled-components";
 import Dropdown from "react-bootstrap/Dropdown";
 
@@ -22,7 +23,7 @@ const Movies = () => {
   }, []);
 
   return (
-    <div>
+    <div className="Movie">
       <div>
         <h2>List of Movies that can be borrowed in the library</h2>
       </div>

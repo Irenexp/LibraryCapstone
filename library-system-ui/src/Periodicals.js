@@ -98,25 +98,16 @@ const Periodicals = () => {
       <div className="container">
         <div className="filter">
           <h5>Filter</h5>
-          <div>
-            <Availability />
-          </div>
-          <div>
-            <Genre />
-          </div>
-          <div>
-            <Author />
-          </div>
+          <Filter />
         </div>
-        <div>
-          <h5>List</h5>
+        <div className="book-list">
+          <h5>Book List</h5>
           {loading ? (
             <p>Loading...</p>
           ) : (
             <ul>
               {periodicalList.map((periodical) => (
                 <li key={periodical.id}>
-                  {/*<p>Title: {book.title}</p>*/}
                   <PeriodicalCard periodical={periodical} />
                 </li>
               ))}
