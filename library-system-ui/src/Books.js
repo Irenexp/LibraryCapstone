@@ -1,6 +1,11 @@
 //import React, {useState, useEffect} from 'react';
 import Dropdown from "react-bootstrap/Dropdown";
 import './Books.css';
+import PeriodicalCard from "./PeriodicalCard";
+import periodicalList from "./Periodicals";
+import Periodicals from "./Periodicals";
+import loading from "./Periodicals";
+
 
 const Books = () => {
   return (
@@ -15,6 +20,21 @@ const Books = () => {
         </div>
         <div className="books">
           <h5>List</h5>
+          <div>
+      <h2>List of Periodicals that can be viewed in the library</h2>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <ul>
+          {periodicalList.map((periodical) => (
+            <li key={periodical.id}>
+              {/*<p>Title: {book.title}</p>*/}
+              <PeriodicalCard periodical={periodical} />
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
         </div>
       </div>
     </div>
