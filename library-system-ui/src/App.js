@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Books from './Books';
 import Movies from './Movies';
 import Periodicals from './Periodicals';
+import Cart from './Cart';
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/books" element={<Books />} />  // Books route
           <Route path="/movies" element={<Movies />} />  // Movies route
           <Route path="/periodicals" element={<Periodicals />} />  // Periodicals route
+          <Route path="/cart" element={<Cart />} />  // Cart route
         </Routes>
         <Footer />
       </div>
@@ -34,6 +36,9 @@ const NavBar = () => {
       </div>
       <SearchBar />
       <UserAccount />
+      <Link to="/cart">
+        <img src='cart-icon.png' alt="Cart" className="cart-icon" />
+      </Link>
     </div>
   );
 }

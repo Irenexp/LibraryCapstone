@@ -80,6 +80,7 @@
   color: white;
   padding: 10px;
   text-decoration: none;
+  margin-right: 20px;
 }
 
 .search-bar input {
@@ -91,10 +92,16 @@
 }
 
 .user-account {
-  padding: 10px;
+  margin-right: 10px;
 }
 
 .main-content h1 {
   color: #333;
 }
 
+.cart-icon {
+  height: 25px; 
+  width: auto;
+  margin: 0;
+  filter: brightness(0) invert(1);
+}
