@@ -1,142 +1,70 @@
-.movie-page-container li {
-    position: relative; 
-    width: 100%; 
-    height: 1093px;
-    overflow: hidden;
-    list-style-type: none;
-  }
-  
-.rectangle-left {
-    position: absolute;
-    top: 70px;
-    left: 0; 
-    bottom: 75px;
-    width: 450px;
-    height: 75vh;
-    background: #D9D9D9;
-    z-index: 1; 
-}
-  
-.rectangle-right {
-    position: absolute;
-    top: 70px;
-    left:450px;
-    right: 0; 
-    width: 1191px;
-    height: 75vh;
-    background: #F6EFEF;
-    z-index: 1; 
-}
-
-
-.filter-sidebar {
-    width: 20vw; 
-    height: 70vh; 
-    border-right: 1px solid #ddd; 
-    padding: 20px;
-    z-index: 5;
-    position: relative;
-}
-
-.filter-header {
-    position: relative;
-    left: 5px;
-    right: 5px;
-    width: 80px;
-    height: 30px;
-    font-family: 'Roboto', sans-serif; 
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
-    color: #33717E;
-    border-bottom: 1px solid #e2e8f0; 
-    text-align: left;
-}
-  
-.filter-option {
-    margin-bottom: 0.5rem;
-    z-index: 5;
-    position: relative; 
-    cursor: pointer;
-}
-
-.filter-main {
+.main-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: transparent;
-    width: 180px;
+    flex-wrap: nowrap; /* Keep this as nowrap to ensure side-by-side layout */
+  }
+
+.filter-container {
+    flex: 0 0 20%;
+    height: calc(100vh - 20px);
+    overflow-y: auto;
+    border: 1px solid #d3d3d3; /* Light grey border added here */
+    /* Additional styling for padding or margin as needed */
+  }
+  
+
+.dropdown-toggle {
+    background-color: #00008b; /* Dark blue background for the dropdown button */
+    color: white; /* White text color for contrast */
+    border-color: #00008b; /* Dark blue border for the dropdown button */
 }
 
-.filter-option a .chevron {
-    float: right;
+.availability-drpdw .dropdown-toggle,
+.genre-drpdw .dropdown-toggle,
+.author-drpdw .dropdown-toggle {
+  background-color: #00008b !important; /* Dark blue background */
+  border: 1px solid #00008b !important; /* Dark blue border */
 }
 
-.filter-link {
-    display: block;
-    color: #333;
-    padding: 0.3rem 0;
-    border-bottom: 1px solid #e2e8f0;
-    font-size: 15px;
-    text-decoration: none;
-    text-align: left;
-    width: 100px;
-    margin-left: 5px;
-    cursor: pointer;
-    z-index: 5;
+/* You may also want to add styles for hover, focus, and active states */
+.availability-drpdw .dropdown-toggle:hover,
+.genre-drpdw .dropdown-toggle:hover,
+.author-drpdw .dropdown-toggle:hover,
+.availability-drpdw .dropdown-toggle:focus,
+.genre-drpdw .dropdown-toggle:focus,
+.author-drpdw .dropdown-toggle:focus {
+  background-color: #0000cd !important; /* Slightly lighter blue for hover/focus */
 }
-
-.chevron {
-    padding-left: 5rem; 
-}
-
-.filter-sub-options{
-    display: block;
-    flex-direction: column;
-    padding-left: 20px;
-    padding-top: 10px; 
-}
-
-.filter-sub-options a {
-    display: block;
-    color: #333;
-    padding: 0.3rem 0;
-    font-size: 15px;
-    text-decoration: none;
-    text-align: left;
-    width: 170px; 
-    cursor: pointer;
-    border-bottom: 1px solid #e2e8f0;
+  
+  /* Ensure this selector is more specific or add !important to override default styles if necessary */
+  .dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 0, 139, 0.5); /* Focus shadow in dark blue */
+  }
+  
+  .movie-container {
+    flex: 1; /* Fill the remaining space */
+    height: calc(100vh - 20px); /* Match filter container height */
+    overflow-y: auto; /* Scrollable container for books */
+    padding: 20px;
+  }
+  
+  .movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px; /* Adjust gap to your preference */
+  }
+  
+  /* Style for each book card to ensure two per row */
+  .card-container {
+    width: calc(50% - 20px); /* Subtract the gap from the total width */
+    margin: 10px; /* Adjust margin to your preference */
+    /* Other styles for the card */
   }
 
 
-.filter-sub-options a:last-child {
-    border-bottom: none;
-}
+  @media (max-width: 768px) {
+    .main-container {
+      flex-direction: column;
+    }
 
-
-.filter-main:hover,
-.filter-main-hover {
-  background-color: #f3f4f6; 
 }
-
-.add-to-cart-btn {
-    background-color: #000; 
-    color: #fff; 
-    padding: 0.75rem 1.5rem; 
-    border: none; 
-    border-radius: 0.375rem;
-    cursor: pointer; 
-    margin-top: 1rem; 
-}
-  
-.movie-list {
-    flex: 1;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
-    grid-gap: 20px;
-    align-items: start; 
-}
-  

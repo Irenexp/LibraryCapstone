@@ -1,99 +1,129 @@
-import React, { useEffect, useState } from "react";
+import Dropdown from "react-bootstrap/Dropdown";
 import './Movie.css';
 import MovieCard from "./MovieCard";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useEffect, useState } from "react";
 
 
 const Movies = () => {
-  const [movieList, setMovieList] = useState([]);
+
+    const [movieList, setMovieList] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
       const fetchData = async () => {
         try {
           const response = await fetch("http://localhost:8080/movie");
+  
           const data = await response.json();
           setMovieList(data);
+          setLoading(false);
         } catch (error) {
           console.error("error fetching data", console.error());
-        }finally{
-          setLoading(false);
         }
       };
       fetchData();
     }, []);
 
-    if (loading) {
-      return <div>Loading...</div>;
-    }
 
     return (
-      <div className="movies-page-container">
-        
-        {/* <div className="rectangle-left"></div>
-        <div className="rectangle-right"></div> */}
-        <FilterSidebar/>
-        <ul>
-        {movieList.map((movie) => (
-          <li key={movie.id}>
-            <MovieCard movie={movie} />
-          </li>
-        ))}
-      </ul>
-        
+      <div className="main-container">
+        <div className="filter-container">
+          <h5>Filter</h5>
+          <Filter />
+        </div>
+        <div className="movie-container">
+          <h2>List of Movies that can be borrowed in the library</h2>
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <div className="movie-list">
+              {movieList.map((movie) => (
+                <MovieCard key={movie.id} movie={movie} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-    
     );
   }
 
-  
-  const FilterSidebar = () => {
-    const [expanded, setExpanded] = useState({});
-    
-    const handleToggle = (filter) => {
-      setExpanded(prevState => ({
-        ...prevState,
-        [filter]: !prevState[filter]
-      }));
-    };
+const Filter = () => {
+  return( 
+    <div>
+  <div><Availability /></div>
+  <div><Genre /></div>
+  <div><Director /></div>
+  <div><Rating /></div>
+  </div>
+  );
 
-      return (
-        <div className="filter-sidebar">
-        <h3 className="filter-header">Filters</h3>
-        <div className="filter-option" onClick={() => handleToggle('availability')}>
-          <div className="filter-main">
-            <span className="filter-link">Availability</span>
-            <span className="chevron">&gt;</span>
-          </div>
-          {expanded['availability'] && (
-            <div className="filter-sub-options">
-              <a href="#/available" className="filter-link">Available</a>
-              <a href="#/unavailable" className="filter-link">Unavailable</a>
-            </div>
-        )}
-      </div>
-      </div>
-        //   {/* <div className="filter-option">
-        //     <a href="#genre">Genre <span className="chevron">&gt;</span></a>
-        //   </div>
-        //   <div className="filter-option">
-        //     <a href="#director">Director <span className="chevron">&gt;</span></a>
-        //   </div>
-        //   <div className="filter-option">
-        //     <a href="#rating">Rating <span className="chevron">&gt;</span></a>
-        //   </div>
-        //   <div className="filter-option">
-        //     <a href="#screen-writer">Screen Writer <span className="chevron">&gt;</span></a>
-        //   </div>
-        //   <div className="filter-option">
-        //     <a href="#release-date">Release Date <span className="chevron">&gt;</span></a>
-        //   </div>
-        //   <div className="filter-option">
-        //     <a href="#lead-actors">Lead Actors <span className="chevron">&gt;</span></a>
-        //   </div>
-        //   <button className="add-to-cart-btn">Add to cart</button>
-        // </div> */}
-      );
-  };
-  
-  
-  export default Movies; 
+};
+
+const Availability = () => {
+  return (
+    <Dropdown className="availability-drpdw">
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Availability
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">Available</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Not Available</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+};
+
+const Genre = () => {
+  return (
+    <Dropdown className="genre-drpdw">
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Genre
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">Fiction</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Romance</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Action</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Scientific</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Thriller</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+};
+
+const Director = () => {
+  return (
+    <Dropdown className="director-drpdw">
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Director
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">Christopher Nolan</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Francis Ford Coppola</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Frank Darabont</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">James Cameron</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Quentin Tarantino</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Robert Zemeckis</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+};
+
+const Rating = () => {
+  return (
+    <Dropdown className="rating-drpdw">
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Rating
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">9</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">8</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">7</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+};
+
+export default Movies;
