@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
-  width: 35%;
+  width: 30%;
   margin: 40px;
   display: flex;
   flex-direction: column;
@@ -16,10 +16,6 @@ const Description = styled.div`
 `;
 
 const Genre = styled.div`
-  text-align: center;
-`;
-
-const Director = styled.div`
   text-align: center;
 `;
 
@@ -44,7 +40,6 @@ const MovieCard = ({ movie }) => {
       <MovieImage src={movie.imgUrl} />
       <br></br>
       <Description>Title: {movie.title}</Description>
-      <Director>Director: {movie.director}</Director>
       <Genre>Genre: {movie.genre}</Genre>
       <br></br>
       <AddToCart>Add to cart</AddToCart>
