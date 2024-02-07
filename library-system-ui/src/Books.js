@@ -1,13 +1,31 @@
 //import React, {useState, useEffect} from 'react';
 import Dropdown from "react-bootstrap/Dropdown";
 import './Books.css';
-import PeriodicalCard from "./PeriodicalCard";
-import periodicalList from "./Periodicals";
-import Periodicals from "./Periodicals";
-import loading from "./Periodicals";
+import BooksCard from "./BookCard";
+import React, { useEffect, useState } from "react";
 
 
 const Books = () => {
+
+
+    const [bookList, setBookList] = useState([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch("http://localhost:8080/books");
+  
+          const data = await response.json();
+          setBookList(data);
+          setLoading(false);
+        } catch (error) {
+          console.error("error fetching data", console.error());
+        }
+      };
+      fetchData();
+    }, []);
+
+
   return (
     <div>
       <div>
@@ -19,25 +37,27 @@ const Books = () => {
           <Filter />
         </div>
         <div className="books">
-          <h5>List</h5>
-          <div>
-      <h2>List of Periodicals that can be viewed in the library</h2>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {periodicalList.map((periodical) => (
-            <li key={periodical.id}>
-              {/*<p>Title: {book.title}</p>*/}
-              <PeriodicalCard periodical={periodical} />
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-        </div>
+      <div>
+        <h2>List of Books that can be borrowed in the library</h2>
+      </div>
+      <div>
+        <h5>List</h5>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <ul>
+            {bookList.map((book) => (
+              <li key={book.id}>
+                <BooksCard book={book} />
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
+
+    </div>
+        </div>
   );
 };
 
@@ -106,3 +126,4 @@ const Author = () => {
 };
 
 export default Books;
+
