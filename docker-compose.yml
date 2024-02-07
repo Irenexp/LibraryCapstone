@@ -23,3 +23,7 @@ services:
       MYSQL_PASSWORD: springuser
     ports:
       - "3306:3306"
+<<<<<<< Updated upstream
+=======
+    command: --lower_case_table_names=1
+>>>>>>> Stashed changes

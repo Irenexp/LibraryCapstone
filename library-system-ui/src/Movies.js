@@ -8,39 +8,46 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Movies = () => {
     return (
       <div className="movies-page-container">
-        <div className="rectangle-left"></div>
-        <div className="rectangle-right"></div>
-        <Filters/>
+        
+        {/* <div className="rectangle-left"></div>
+        <div className="rectangle-right"></div> */}
+        <FilterSidebar/>
         
       </div>
     
     );
   }
 
-  const Filters = () => {
-    return (
-      <div>
-        <h3 className="filter-header">Filters</h3>
-        <DropdownButton id="dropdown-availability" title="Availability">
-          <Dropdown.Item href="#/available">Available</Dropdown.Item>
-          <Dropdown.Item href="#/unavailable">Unavailable</Dropdown.Item>
-        </DropdownButton>
   
-        <DropdownButton id="dropdown-genre" title="Genre">
-          <Dropdown.Item href="#/action">Action</Dropdown.Item>
-          <Dropdown.Item href="#/romance">Romance</Dropdown.Item>
-          <Dropdown.Item href="#/thriller">Thriller</Dropdown.Item>
-          {/* Add more genres as needed */}
-        </DropdownButton>
-  
-        <DropdownButton id="dropdown-author" title="Author">
-          <Dropdown.Item href="#/author1">Author 1</Dropdown.Item>
-          <Dropdown.Item href="#/author2">Author 2</Dropdown.Item>
-          <Dropdown.Item href="#/author3">Author 3</Dropdown.Item>
-          {/* Add more authors as needed */}
-        </DropdownButton>
-      </div>
-    );
+  const FilterSidebar = () => {
+      return (
+        <div className="filter-sidebar">
+          <h3 className="filter-header">Filters</h3>
+          <div className="filter-option">
+            <a href="#availability">Availability <span className="chevron">&gt;</span></a>
+          </div>
+          <div className="filter-option">
+            <a href="#genre">Genre <span className="chevron">&gt;</span></a>
+          </div>
+          <div className="filter-option">
+            <a href="#director">Director <span className="chevron">&gt;</span></a>
+          </div>
+          <div className="filter-option">
+            <a href="#rating">Rating <span className="chevron">&gt;</span></a>
+          </div>
+          <div className="filter-option">
+            <a href="#screen-writer">Screen Writer <span className="chevron">&gt;</span></a>
+          </div>
+          <div className="filter-option">
+            <a href="#release-date">Release Date <span className="chevron">&gt;</span></a>
+          </div>
+          <div className="filter-option">
+            <a href="#lead-actors">Lead Actors <span className="chevron">&gt;</span></a>
+          </div>
+          <button className="add-to-cart-btn">Add to cart</button>
+        </div>
+      );
   };
-
+  
+  
   export default Movies; 

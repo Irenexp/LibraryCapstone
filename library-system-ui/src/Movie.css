@@ -9,8 +9,9 @@
     position: absolute;
     top: 75px;
     left: 0; 
-    width: 729px;
-    height: 100%;
+    bottom: 75px;
+    width: 450px;
+    height: 75vh;
     background: #D9D9D9;
     z-index: 1; 
 }
@@ -21,36 +22,99 @@
     left:450px;
     right: 0; 
     width: 1191px;
-    height: 100%;
+    height: 75vh;
     background: #F6EFEF;
     z-index: 1; 
 }
 
 
-
-
-
-.filters-background {
-    position: absolute;
-    top: 60px; 
-    left: 50px;
-    width: 417px;
-    height: 658px;
-    background: linear-gradient(0deg, #FFFDFD, #FFFDFD), linear-gradient(0deg, #FFFDFD, #FFFDFD), #FFFDFD;
-  
+.filter-sidebar {
+    width: 20vw; /* Adjust as necessary */
+    height: 70vh; /* Adjust based on header height */
+    border-right: 1px solid #ddd; /* Add a border to separate from the content */
+    padding: 20px;
+    z-index: 5;
+    position: relative;
 }
 
 .filter-header {
-    position: absolute;
-    top: 90px; 
-    left: 50px;
-    width: 220px;
-    height: 41px;
-    font-family: 'Roboto', sans-serif;
+    position: relative;
+    left: 0px;
+    right: 5px;
+    width: 80px;
+    height: 30px;
+    font-family: 'Roboto', sans-serif; 
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 24px;
     color: #33717E;
-  }
+    border-bottom: 1px solid #e2e8f0; 
+}
+  
+.filter-option {
+    margin-bottom: 0.5rem;
+    z-index: 5;
+    position: relative; 
+}
 
+.filter-option a {
+    display: block;
+    color: #333; 
+    padding: 0.3rem 0; /* Tailwind padding: py-2 */
+    border-bottom: 1px solid #e2e8f0; 
+    z-index: 5;
+    position: relative;
+    font-size: 15px;
+}
+
+.filter-option a .chevron {
+    float: right;
+}
+
+.add-to-cart-btn {
+    background-color: #000; /* Tailwind background color: bg-black */
+    color: #fff; /* Tailwind text color: text-white */
+    padding: 0.75rem 1.5rem; /* Tailwind padding: py-3 px-6 */
+    border: none; /* Tailwind border: border-none */
+    border-radius: 0.375rem; /* Tailwind border radius: rounded-md */
+    cursor: pointer; /* Tailwind cursor: cursor-pointer */
+    margin-top: 1rem; /* Tailwind margin: mt-4 */
+}
+  
+.movie-list {
+    flex: 1;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Creates a responsive grid */
+    grid-gap: 20px;
+    align-items: start; /* Align the grid items to the start */
+}
+  
+.movie-item {
+    background-color: #fff; /* Placeholder color */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Make sure the image doesn't overflow the container */
+}
+  
+.movie-item img {
+    width: 100%;
+    display: block;
+    object-fit: cover; /* This will cover the div without stretching the image */
+}
+
+.movie-info {
+    padding: 0.5rem; /* Tailwind padding: p-2 */
+    text-align: left; /* Tailwind text alignment: text-left */
+}
+
+.movie-info h5 {
+    margin: 0;
+    color: #333; /* Tailwind text color: text-gray-800 */
+}
+  
+  .movie-info p {
+    margin: 0;
+    color: #666; /* Tailwind text color: text-gray-600 */
+}
