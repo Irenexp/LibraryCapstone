@@ -1,0 +1,6 @@
+.Books {
+    overflow-y: auto;
+    max-height: 500px;
+  }
+  
+  /* Apply max-height to the ul element */

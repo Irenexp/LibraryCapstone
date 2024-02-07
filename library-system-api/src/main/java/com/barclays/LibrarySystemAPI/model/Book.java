@@ -30,14 +30,8 @@ public class Book{
     @Column(name = "quantity")
     private int quantity;
     private boolean isAvailable;
+    private  String imgUrl;
 
-    public Book(Long id, String title, Author author, Genre genre, boolean isAvailable) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-        this.genre = genre;
-        this.isAvailable = isAvailable;
-    }
 }
 
 

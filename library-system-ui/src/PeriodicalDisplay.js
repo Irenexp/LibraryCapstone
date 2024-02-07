@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PeriodicalCard from "./PeriodicalCard";
+import periodicalList from "./Periodicals";
+import Periodicals from "./Periodicals";
+import loading from "./Periodicals";
 import Dropdown from "react-bootstrap/Dropdown";
-import "./Periodical.css";
 
 const Filter = () => {
   return (
@@ -72,43 +74,18 @@ const Author = () => {
   );
 };
 
-const Periodicals = () => {
-  const [periodicalList, setPeriodicalList] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/periodicals");
-
-        const data = await response.json();
-        setPeriodicalList(data);
-        setLoading(false);
-      } catch (error) {
-        console.error("error fetching data", console.error());
-      }
-    };
-    fetchData();
-  }, []);
-
+const PeriodicalDisplay = () => {
   return (
-    <div className="Periodical">
+    <div>
       <div>
         <h2>List of Periodicals that can be viewed in the library</h2>
       </div>
       <div className="container">
         <div className="filter">
           <h5>Filter</h5>
-          <div>
-            <Availability />
-          </div>
-          <div>
-            <Genre />
-          </div>
-          <div>
-            <Author />
-          </div>
+          <Filter />
         </div>
-        <div>
+        <div className="periodicals">
           <h5>List</h5>
           {loading ? (
             <p>Loading...</p>
@@ -127,5 +104,4 @@ const Periodicals = () => {
     </div>
   );
 };
-
-export default Periodicals;
+export default PeriodicalDisplay;

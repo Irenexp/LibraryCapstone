@@ -26,4 +26,5 @@ public class Movie {
     @Enumerated(EnumType.STRING)
     private Genre genre;
     private double rating;
+    private  String imgUrl;
 }

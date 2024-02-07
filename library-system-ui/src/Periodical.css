@@ -1,0 +1,50 @@
+.Periodical {
+   overflow-y: auto;
+   max-height: 500px;
+ }
+
+
+
+.container {
+    display: flex;
+    flex-grow: 1;
+  /* justify-content: space-between; */
+ }
+ 
+ 
+ .filter {
+    width: 200px; /* Adjust the width of the filter as needed */
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border: 2px solid brown;
+ }
+ 
+ 
+ .periodicals {
+    flex: 1;
+    padding: 40px;
+ }
+ 
+ 
+ .availability-drpdw{
+    padding: 5px;
+ }
+ 
+ 
+ .author-drpdw{
+    padding: 5px;
+ }
+ 
+ 
+ .genre-drpdw{
+    padding: 5px;
+ }
+ 
+ .periodicals {
+   overflow-y: auto;
+   max-height: 500px;
+ }
+ 

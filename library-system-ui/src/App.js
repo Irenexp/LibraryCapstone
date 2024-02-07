@@ -1,26 +1,26 @@
-import './App.css';
-import React, {useState, useEffect} from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Books from './Books';
-import Movies from './Movies';
-import Periodicals from './Periodicals';
-
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Books from "./Books";
+import Movies from "./Movies";
+import Periodicals from "./Periodicals";
 
 const App = () => {
   return (
-      <div className="App">
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<MainContent />} />  // Home route shows MainContent
-          <Route path="/books" element={<Books />} />  // Books route
-          <Route path="/movies" element={<Movies />} />  // Movies route
-          <Route path="/periodicals" element={<Periodicals />} />  // Periodicals route
-        </Routes>
-        <Footer />
-      </div>
+    <div className="App">
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<MainContent />} /> // Home route shows
+        MainContent
+        <Route path="/books" element={<Books />} /> // Books route
+        <Route path="/movies" element={<Movies />} /> // Movies route
+        <Route path="/periodicals" element={<Periodicals />} /> // Periodicals
+        route
+      </Routes>
+      <Footer />
+    </div>
   );
-}
-
+};
 
 const NavBar = () => {
   return (
@@ -36,7 +36,7 @@ const NavBar = () => {
       <UserAccount />
     </div>
   );
-}
+};
 
 const SearchBar = () => {
   return (
@@ -45,18 +45,14 @@ const SearchBar = () => {
       <button type="submit">🔍</button>
     </div>
   );
-}
+};
 
 const UserAccount = () => {
-  return (
-    <div className="user-account">
-      Andrew Swinney
-    </div>
-  );
-}
+  return <div className="user-account">Andrew Swinney</div>;
+};
 
 const MainContent = () => {
-  const logoImage = process.env.PUBLIC_URL + 'capstone_library_image.jpg';
+  const logoImage = process.env.PUBLIC_URL + "capstone_library_image.jpg";
 
   return (
     <div className="content-container">
@@ -69,29 +65,29 @@ const MainContent = () => {
       </div>
     </div>
   );
-}
+};
 
 const Footer = () => {
+  const [currentDate, setCurrentDate] = useState(new Date());
 
-  const [currentDate, setCurrentDate]=useState(new Date());
-  
-  useEffect(()=>{
-      const intervalId = setInterval(()=>{
-          setCurrentDate(new Date()); 
-  },1000);
-  return()=>clearInterval(intervalId);
-  }, [])
-return (
-  <footer>
-    <div className="block">
-    <div className="footer-content">
-          <span classname = "footer-text">&copy; OLS | {currentDate.getFullYear()}</span> 
-          <span classname = "footer-time"> {currentDate.toLocaleString()}</span>
-       </div>
-       </div>
-  </footer>
-);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
+  return (
+    <footer>
+      <div className="block">
+        <div className="footer-content">
+          <span classname="footer-text">
+            &copy; OLS | {currentDate.getFullYear()}
+          </span>
+          <span classname="footer-time"> {currentDate.toLocaleString()}</span>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default App;
-
