@@ -64,7 +64,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #f3f4f6;
+    background-color: transparent;
+    width: 180px;
 }
 
 .filter-option a .chevron {
@@ -79,7 +80,7 @@
     font-size: 15px;
     text-decoration: none;
     text-align: left;
-    width: 170px;
+    width: 100px;
     margin-left: 5px;
     cursor: pointer;
     z-index: 5;
@@ -114,8 +115,9 @@
 }
 
 
-.filter-option:hover a:filter-main {
-    background-color: #e2e8f0; 
+.filter-main:hover,
+.filter-main-hover {
+  background-color: #f3f4f6; 
 }
 
 .add-to-cart-btn {

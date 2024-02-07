@@ -20,7 +20,8 @@ const Movies = () => {
 
   
   const FilterSidebar = () => {
-    const [expanded, setExpanded] = useState({}); 
+    const [expanded, setExpanded] = useState({});
+    const [hoverIndex, setHoverIndex] = useState(null);
     
     const handleToggle = (filter) => {
       setExpanded(prevState => ({
@@ -31,17 +32,17 @@ const Movies = () => {
 
       return (
         <div className="filter-sidebar">
-          <h3 className="filter-header">Filters</h3>
-          <div className="filter-option">
-          <div className="filter-main" onClick={() => handleToggle('availability')}>
-        <span className="filter-link">Availability</span>
-        <span className="chevron">&gt;</span>
-        </div>
-        {expanded['availability'] && (
-          <div className="filter-sub-options">
-            <a href="#/available" className="filter-link">Available</a>
-            <a href="#/unavailable" className="filter-link">Unavailable</a>
+        <h3 className="filter-header">Filters</h3>
+        <div className="filter-option" onClick={() => handleToggle('availability')}>
+          <div className="filter-main">
+            <span className="filter-link">Availability</span>
+            <span className="chevron">&gt;</span>
           </div>
+          {expanded['availability'] && (
+            <div className="filter-sub-options">
+              <a href="#/available" className="filter-link">Available</a>
+              <a href="#/unavailable" className="filter-link">Unavailable</a>
+            </div>
         )}
       </div>
       </div>
