@@ -57,24 +57,65 @@
     margin-bottom: 0.5rem;
     z-index: 5;
     position: relative; 
+    cursor: pointer;
 }
 
-.filter-option a {
-    display: block;
-    color: #333; 
-    padding: 0.3rem 0; /* Tailwind padding: py-2 */
-    border-bottom: 1px solid #e2e8f0; 
-    z-index: 5;
-    position: relative;
-    font-size: 15px;
-    text-decoration: none;
-    text-align: left;
-    left: 5px;
-    width: 170px; 
+.filter-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f3f4f6;
 }
 
 .filter-option a .chevron {
     float: right;
+}
+
+.filter-link {
+    display: block;
+    color: #333;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: left;
+    width: 170px;
+    margin-left: 5px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.chevron {
+    padding-left: 5rem; 
+}
+
+.filter-sub-options{
+    display: block;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-top: 10px; 
+}
+
+.filter-sub-options a {
+    display: block;
+    color: #333;
+    padding: 0.3rem 0;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: left;
+    width: 170px; 
+    cursor: pointer;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+
+.filter-sub-options a:last-child {
+    border-bottom: none;
+}
+
+
+.filter-option:hover a:filter-main {
+    background-color: #e2e8f0; 
 }
 
 .add-to-cart-btn {
@@ -100,26 +141,26 @@
     background-color: #fff; /* Placeholder color */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Make sure the image doesn't overflow the container */
+    overflow: hidden;
 }
   
 .movie-item img {
     width: 100%;
     display: block;
-    object-fit: cover; /* This will cover the div without stretching the image */
+    object-fit: cover; 
 }
 
 .movie-info {
-    padding: 0.5rem; /* Tailwind padding: p-2 */
-    text-align: left; /* Tailwind text alignment: text-left */
+    padding: 0.5rem; 
+    text-align: left; 
 }
 
 .movie-info h5 {
     margin: 0;
-    color: #333; /* Tailwind text color: text-gray-800 */
+    color: #333; 
 }
   
-  .movie-info p {
+.movie-info p {
     margin: 0;
-    color: #666; /* Tailwind text color: text-gray-600 */
+    color: #666; 
 }
