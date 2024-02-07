@@ -25,40 +25,28 @@ const Books = () => {
     }, []);
 
 
-  return (
-    <div>
-      <div>
-        <h4>Books </h4>
-      </div>
-      <div className="container">
-        <div className="filter">
+    return (
+      <div className="main-container">
+        <div className="filter-container">
           <h5>Filter</h5>
           <Filter />
         </div>
-        <div className="books">
-      <div>
-        <h2>List of Books that can be borrowed in the library</h2>
-      </div>
-      <div>
-        <h5>List</h5>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <ul>
-            {bookList.map((book) => (
-              <li key={book.id}>
-                <BooksCard book={book} />
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </div>
-
-    </div>
+        <div className="books-container">
+          <h2>List of Books that can be borrowed in the library</h2>
+          <h5>List</h5>
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <div className="books-list">
+              {bookList.map((book) => (
+                <BooksCard key={book.id} book={book} />
+              ))}
+            </div>
+          )}
         </div>
-  );
-};
+      </div>
+    );
+  }
 
 const Filter = () => {
   return( 
