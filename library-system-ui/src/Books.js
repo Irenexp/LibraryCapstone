@@ -34,7 +34,7 @@ const Filter = () => {
 
 const Availability = () => {
   return (
-    <Dropdown>
+    <Dropdown className="availability-drpdw">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
         Availability
       </Dropdown.Toggle>
@@ -49,7 +49,7 @@ const Availability = () => {
 
 const Genre = () => {
   return (
-    <Dropdown>
+    <Dropdown className="genre-drpdw">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
         Genre
       </Dropdown.Toggle>
@@ -67,7 +67,7 @@ const Genre = () => {
 
 const Author = () => {
   return (
-    <Dropdown>
+    <Dropdown className="author-drpdw">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
         Author
       </Dropdown.Toggle>
