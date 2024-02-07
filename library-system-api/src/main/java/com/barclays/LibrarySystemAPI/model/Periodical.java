@@ -18,4 +18,5 @@ public class Periodical {
     private String type;
     private String publicationDate;
     private String periodicalName;
+    private String imgUrl;
 }
