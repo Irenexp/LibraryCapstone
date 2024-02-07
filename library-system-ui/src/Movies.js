@@ -9,8 +9,8 @@ const Movies = () => {
     return (
       <div className="movies-page-container">
         
-        {/* <div className="rectangle-left"></div>
-        <div className="rectangle-right"></div> */}
+        <div className="rectangle-left"></div>
+        <div className="rectangle-right"></div>
         <FilterSidebar/>
         
       </div>
