@@ -17,6 +17,7 @@ public class Movie {
     private  Long id;
 
     private String title;
+    private String imgUrl;
     private String leadActors;
     private String director;
     private String screenWriter;

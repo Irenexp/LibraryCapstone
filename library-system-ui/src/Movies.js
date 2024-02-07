@@ -1,17 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import './Movie.css';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import MovieCard from "./MovieCard";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Movies = () => {
+  const [movieList, setMovieList] = useState([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch("http://localhost:8080/movie");
+  
+          const data = await response.json();
+          setMovieList(data);
+          setLoading(false);
+        } catch (error) {
+          console.error("error fetching data", console.error());
+        }
+      };
+      fetchData();
+    }, []);
+
     return (
       <div className="movies-page-container">
         
         <div className="rectangle-left"></div>
         <div className="rectangle-right"></div>
         <FilterSidebar/>
+        {movieList.map((movie) => (
+              <li key={movie.id}>
+                <MovieCard movie={movie} />
+              </li>
+            ))}
         
       </div>
     
@@ -21,7 +42,6 @@ const Movies = () => {
   
   const FilterSidebar = () => {
     const [expanded, setExpanded] = useState({});
-    const [hoverIndex, setHoverIndex] = useState(null);
     
     const handleToggle = (filter) => {
       setExpanded(prevState => ({
