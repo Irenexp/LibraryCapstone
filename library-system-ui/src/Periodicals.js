@@ -7,7 +7,7 @@ const Periodicals = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/books");
+        const response = await fetch("http://localhost:8080/periodicals");
 
         const data = await response.json();
         setPeriodicalList(data);
