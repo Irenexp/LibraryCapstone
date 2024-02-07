@@ -1,49 +1,20 @@
-/* Filter container */
-.filter-container {
-    margin-bottom: 20px;
-  }
-  
-  /* Filter dropdown */
-  .filter-dropdown {
-    width: 200px;
-  }
-  
-  /* Filter label */
-  .filter-label {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  /* Filter options */
-  .filter-options {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  /* Filter option */
-  .filter-option {
-    margin-bottom: 5px;
-    cursor: pointer;
-  }
-  
-  /* Selected filter option */
-  .filter-option.selected {
-    font-weight: bold;
-  }
-  
-  /* Filter button */
-  .filter-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 16px;
-    cursor: pointer;
-  }
-  
-  /* Filter button hover */
-  .filter-button:hover {
-    background-color: #0056b3;
-  }
-  
+.container {
+    display: flex;
+    flex-grow: 1;
+  /* justify-content: space-between; */
+}
+
+.filter {
+    width: 200px; /* Adjust the width of the filter as needed */
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border: 2px solid brown;
+}
+
+.books {
+    flex: 1;
+    padding: 40px;
+}

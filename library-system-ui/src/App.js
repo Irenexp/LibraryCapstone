@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Books from './Books';
@@ -85,8 +86,8 @@ return (
   <footer>
     <div className="block">
     <div className="footer-content">
-          <span classname = "footer-text">&copy; OLS | {currentDate.getFullYear()}</span> 
-          <span classname = "footer-time"> {currentDate.toLocaleString()}</span>
+          <span className = "footer-text">&copy; OLS | {currentDate.getFullYear()}</span> 
+          <span className = "footer-time"> {currentDate.toLocaleString()}</span>
        </div>
        </div>
   </footer>
