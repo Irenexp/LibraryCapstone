@@ -20,7 +20,7 @@ const Genre = styled.div`
 `;
 
 const MovieImage = styled.img`
-  height: 70px;
+  height: 50px;
   width: 98%;
   object-fit: cover;
 `;
