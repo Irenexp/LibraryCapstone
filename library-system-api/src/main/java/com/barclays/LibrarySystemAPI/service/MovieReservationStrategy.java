@@ -1,19 +1,14 @@
 package com.barclays.LibrarySystemAPI.service;
 
+import com.barclays.LibrarySystemAPI.model.Movie;
+import com.barclays.LibrarySystemAPI.repository.ReservationStrategy;
 import com.barclays.LibrarySystemAPI.dto.ReserveDTO;
-import com.barclays.LibrarySystemAPI.exception.IdNotFoundException;
 import com.barclays.LibrarySystemAPI.exception.ItemNotFoundException;
 import com.barclays.LibrarySystemAPI.exception.OutOfQuantityException;
-import com.barclays.LibrarySystemAPI.model.*;
 import com.barclays.LibrarySystemAPI.repository.MovieRepository;
-import com.barclays.LibrarySystemAPI.repository.ReservationStrategy;
-import jakarta.persistence.Entity;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 @Component

@@ -1,18 +1,15 @@
 package com.barclays.LibrarySystemAPI.service;
 
+import com.barclays.LibrarySystemAPI.repository.BookRepository;
+import com.barclays.LibrarySystemAPI.repository.ReservationStrategy;
 import com.barclays.LibrarySystemAPI.dto.ReserveDTO;
 import com.barclays.LibrarySystemAPI.exception.ItemNotFoundException;
 import com.barclays.LibrarySystemAPI.exception.OutOfQuantityException;
 import com.barclays.LibrarySystemAPI.model.Book;
-import com.barclays.LibrarySystemAPI.model.ItemType;
-import com.barclays.LibrarySystemAPI.repository.BookRepository;
-import com.barclays.LibrarySystemAPI.repository.ReservationStrategy;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 

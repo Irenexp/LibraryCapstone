@@ -1,7 +1,7 @@
 package com.barclays.LibrarySystemAPI.service;
 
-import com.barclays.LibrarySystemAPI.model.Book;
 import com.barclays.LibrarySystemAPI.model.Genre;
+import com.barclays.LibrarySystemAPI.model.Book;
 
 import java.util.List;
 

@@ -1,9 +1,8 @@
 package com.barclays.LibrarySystemAPI.service;
 
-import com.barclays.LibrarySystemAPI.exception.IdNotFoundException;
-import com.barclays.LibrarySystemAPI.model.Book;
 import com.barclays.LibrarySystemAPI.model.Genre;
 import com.barclays.LibrarySystemAPI.model.Movie;
+import com.barclays.LibrarySystemAPI.exception.IdNotFoundException;
 import com.barclays.LibrarySystemAPI.repository.MovieRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

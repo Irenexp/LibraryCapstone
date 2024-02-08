@@ -1,6 +1,5 @@
 package com.barclays.LibrarySystemAPI.repository;
 
-import com.barclays.LibrarySystemAPI.model.Movie;
 import com.barclays.LibrarySystemAPI.model.Periodical;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
