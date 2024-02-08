@@ -80,8 +80,6 @@ const Availability = ({ setAvailabilityFilter }) => {
       <Dropdown.Toggle variant="success" id="dropdown-basic">
         Availability
       </Dropdown.Toggle>
-
-
       <Dropdown.Menu>
         <Dropdown.Item onClick={() => setAvailabilityFilter("available")}>
           Available

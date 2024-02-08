@@ -17,8 +17,6 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
     List<Movie> searchMovieByDirectorContaining(String director);
      List<Movie> searchMovieByGenre(Genre genre);
 
-    List<Movie> searchMovieByRating(double rating);
 
-    List<Movie> findByRatingBetween(Double minRating, Double maxRating);
-
+    List<Movie> searchByIsAvailable(boolean isAvailable);
 }

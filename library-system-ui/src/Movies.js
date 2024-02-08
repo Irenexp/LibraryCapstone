@@ -51,7 +51,7 @@ const Movies = () => {
     return (
         <div className="main-container">
             <div className="filter-container">
-                <h5>Filter</h5>
+                <h5 className = "filter">Filter</h5>
                 <Filter setAvailabilityFilter={setAvailabilityFilter}
                         setGenreFilter={setGenreFilter} setDirectorFilter={setDirectorFilter}
                         setRatingFilter = {setRatingFilter}/>
