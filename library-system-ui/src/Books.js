@@ -28,12 +28,11 @@ const Books = () => {
     return (
       <div className="main-container">
         <div className="filter-container">
-          <h5>Filter</h5>
+          <h5 className = "filter"> Filters</h5>
           <Filter />
         </div>
         <div className="books-container">
-          <h2>List of Books that can be borrowed in the library</h2>
-          <h5>List</h5>
+        <h2 className="books-title">Books</h2>
           {loading ? (
             <p>Loading...</p>
           ) : (
