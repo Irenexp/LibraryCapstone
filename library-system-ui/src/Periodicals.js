@@ -6,16 +6,10 @@ import "./Periodicals.css";
 const Periodicals = () => {
   const [periodicalList, setPeriodicalList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [periodicalNameFilter, setPeriodicalNameFilter] = useState();
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let url = "http://localhost:8080/periodicals";
-        if (periodicalNameFilter) {
-          url = `http://localhost:8080/periodical/name?periodicalName=${periodicalNameFilter}`;
-        }
-        const response = await fetch(url);
+        const response = await fetch("http://localhost:8080/periodicals");
 
         const data = await response.json();
         setPeriodicalList(data);
@@ -25,13 +19,13 @@ const Periodicals = () => {
       }
     };
     fetchData();
-  }, [periodicalNameFilter]);
+  }, []);
 
   return (
     <div className="main-container">
       <div className="filter-container">
         <h5>Filter</h5>
-        <Filter setPeriodicalNameFilter={setPeriodicalNameFilter} />
+        <Filter />
       </div>
       <div className="periodicals-container">
         <h2>List of Periodical that can be viewed in the library</h2>
@@ -50,14 +44,14 @@ const Periodicals = () => {
   );
 };
 
-const Filter = ({ setPeriodicalNameFilter }) => {
+const Filter = () => {
   return (
     <div>
       <div>
         <Availability />
       </div>
       <div>
-        <PeriodicalsName setPeriodicalNameFilter={setPeriodicalNameFilter} />
+        <PeriodicalsName />
       </div>
       <div>
         <Type />
@@ -81,7 +75,7 @@ const Availability = () => {
   );
 };
 
-const PeriodicalsName = ({ setPeriodicalNameFilter }) => {
+const PeriodicalsName = () => {
   return (
     <Dropdown className="periodicals-drpdw">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -89,19 +83,9 @@ const PeriodicalsName = ({ setPeriodicalNameFilter }) => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item
-          onClick={() => setPeriodicalNameFilter("National Geographic")}
-        >
-          National Geographic
-        </Dropdown.Item>
-        <Dropdown.Item onClick={() => setPeriodicalNameFilter("Nature")}>
-          Nature
-        </Dropdown.Item>
-        <Dropdown.Item
-          onClick={() => setPeriodicalNameFilter("The Economist Espresso")}
-        >
-          The Economist Expresso
-        </Dropdown.Item>
+        <Dropdown.Item href="#/action-1">National Geographic</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Nature</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">The Economist Expresso</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
