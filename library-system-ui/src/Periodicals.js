@@ -14,7 +14,7 @@ const Periodicals = () => {
       try {
         let url = "http://localhost:8080/periodicals";
         if (periodicalNameFilter) {
-          url = `http://localhost:8080/periodical/name?periodicalName=${periodicalNameFilter}`;
+          url = `http://localhost:8080/periodicals/name?periodicalName=${periodicalNameFilter}`;
         }
 
         if (periodicalTypeFilter) {
@@ -31,7 +31,7 @@ const Periodicals = () => {
         setPeriodicalList(data);
         setLoading(false);
       } catch (error) {
-        console.error("error fetching data", console.error());
+        console.log(error);
       }
     };
     fetchData();
@@ -66,6 +66,7 @@ const Periodicals = () => {
 const Filter = ({ setPeriodicalNameFilter, setPeriodicalTypeFilter }) => {
   return (
     <div>
+      <div>All Periodicals</div>
       <div>
         <PeriodicalsName setPeriodicalNameFilter={setPeriodicalNameFilter} />
       </div>

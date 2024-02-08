@@ -24,13 +24,13 @@ public class PeriodicalController {
         return periodicalService.findAllPeriodicals();
     }
 
-    @GetMapping("periodicals/name")
-    public List <Periodical> findPeriodicalByPeriodicalName(String periodicalName) {
+    @GetMapping("/periodicals/name")
+    public List <Periodical> findPeriodicalByPeriodicalName(@RequestParam String periodicalName) {
         return periodicalService.findPeriodicalByPeriodicalName(periodicalName);
     }
 
-    @GetMapping("periodicals/type")
-    public List<Periodical> findPeriodicalByType(String type){
+    @GetMapping("/periodicals/type")
+    public List<Periodical> findPeriodicalByType(@RequestParam String type){
         return periodicalService.findPeriodicalByType(type );
     }
 }
