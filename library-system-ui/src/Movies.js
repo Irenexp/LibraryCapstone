@@ -1,4 +1,4 @@
-import Dropdown from "react-bootstrap/Dropdown";
+import { Dropdown } from 'react-bootstrap';
 import './Movie.css';
 import MovieCard from "./MovieCard";
 import React, { useEffect, useState } from "react";
@@ -57,7 +57,7 @@ const Movies = () => {
                         setRatingFilter = {setRatingFilter}/>
             </div>
             <div className="movie-container">
-                <h2>List of Movies that can be borrowed in the library</h2>
+                <h2 className="books-title">Movies</h2>
                 {loading ? (
                     <p>Loading...</p>
                 ) : (

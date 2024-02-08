@@ -5,6 +5,7 @@ import Books from './Books';
 import Movies from './Movies';
 import Periodicals from './Periodicals';
 import Cart from './Cart';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = () => {

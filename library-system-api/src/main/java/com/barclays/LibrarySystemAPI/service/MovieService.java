@@ -20,4 +20,7 @@ public interface MovieService {
     void  deleteMovie(Long id);
 
     List<Movie> searchByIsAvailable(boolean isAvailable);
+
+    List<Movie> findMoviesByRatingRange(Double minRating, Double maxRating);
+
 }

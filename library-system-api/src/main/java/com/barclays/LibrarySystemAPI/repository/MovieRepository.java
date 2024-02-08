@@ -19,4 +19,7 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
 
 
     List<Movie> searchByIsAvailable(boolean isAvailable);
+
+    List<Movie> findByRatingBetween(Double minRating, Double maxRating);
+
 }
