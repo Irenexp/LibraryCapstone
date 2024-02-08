@@ -1,5 +1,6 @@
 package com.barclays.LibrarySystemAPI.StepDefinitions;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,6 +20,11 @@ public class FilterStepdefs {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
+    @After
+    public void tearDown() {
+        driver.quit();
+    }
+
     @Given("I am on the Books page at {string}")
     public void iAmOnTheBooksPageAt(String url) {
         driver.get(url);
