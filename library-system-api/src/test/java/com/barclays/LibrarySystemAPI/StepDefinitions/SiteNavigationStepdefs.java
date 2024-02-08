@@ -19,8 +19,6 @@ import java.time.Duration;
 public class SiteNavigationStepdefs {
 
     WebDriver driver;
-//    WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
-//    driverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("home-link")));
 
     @Before
     public void setUp() {
