@@ -45,8 +45,9 @@ class MovieTestWithMockHttpRequest {
     @Test
     void searchMovieByTitle() throws Exception {
         int expectedLength = 1;
-        long expectedId = 3000L;
+        long expectedId = 1;
         ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/movie")
+                        .param("title", "Titanic")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
@@ -61,8 +62,8 @@ class MovieTestWithMockHttpRequest {
             System.out.println("Movies list: " + m);
         }
 
-        assertAll("Testing from a test-data.sql file",
-                //() -> assertEquals(expectedLength, movies.length));
+        assertAll("Testing endpoint to database ",
+                //() -> assertEquals(expecte dLength, movies.length));
                 () -> assertEquals(expectedId, movies[0].getId()));
 
 
@@ -70,8 +71,8 @@ class MovieTestWithMockHttpRequest {
 
     @Test
     void searchMovieByDirectorContaining() throws Exception {
-        int expectedLength = 1;
-        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/movie/author?name=Christopher Nolan")
+        int expectedLength = 2;
+        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/movie/director?name=Christopher Nolan")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
@@ -81,8 +82,8 @@ class MovieTestWithMockHttpRequest {
         Movie[] movies =mapper.readValue(contentAsString, Movie[].class);
 
         assertAll("Testing from a test-data.sql file",
-                () -> assertEquals(expectedLength, movies.length),
-                () -> assertEquals(Genre.FICTION, movies[0].getGenre()));
+              () -> assertEquals(expectedLength, movies.length),
+                () -> assertEquals(Genre.ACTION, movies[0].getGenre()));
 
 
     }
@@ -99,9 +100,9 @@ class MovieTestWithMockHttpRequest {
         String contentAsString = result.getResponse().getContentAsString();
         Movie[] movies = mapper.readValue(contentAsString, Movie[].class);
 
-        assertAll("Testing from a test-data.sql file",
+        assertAll("Testing from mySQL Database",
                 () -> assertEquals(expectedLength, movies.length),
-                () -> assertEquals("The Godfather", movies[1].getTitle()));
+                () -> assertEquals("Titanic", movies[0].getTitle()));
 
 
 
@@ -111,7 +112,7 @@ class MovieTestWithMockHttpRequest {
 
     @Test
     void findAllMovies() throws Exception {
-        int expectedLength = 4;
+        int expectedLength = 7;
         ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/movie")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
@@ -123,10 +124,8 @@ class MovieTestWithMockHttpRequest {
 
         assertAll("Testing from a test-data.sql file",
                 () -> assertEquals(expectedLength, movies.length),
-                () -> assertEquals("Christopher Nolan", movies[0].getScreenWriter()));
-
-
-
+                () -> assertEquals("James Cameron", movies[0].getScreenWriter()));
     }
+
 
 }

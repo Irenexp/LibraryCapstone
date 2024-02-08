@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Table(name = "BOOK")
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 public class Book{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,11 +32,21 @@ public class Book{
     private int quantity;
     private boolean isAvailable;
 
-    public Book(Long id, String title, Author author, Genre genre, boolean isAvailable) {
+    public Book(Long id, String title, Author author, Genre genre, int quantity, boolean isAvailable) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.genre = genre;
+        this.quantity = quantity;
+        this.isAvailable = isAvailable;
+    }
+    public Book(Long id, String title, String imgUrl, Author author, Genre genre, int quantity, boolean isAvailable) {
+        this.id = id;
+        this.title = title;
+        this.imgUrl = imgUrl;
+        this.author = author;
+        this.genre = genre;
+        this.quantity = quantity;
         this.isAvailable = isAvailable;
     }
 }

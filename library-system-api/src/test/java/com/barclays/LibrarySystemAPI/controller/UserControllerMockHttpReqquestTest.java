@@ -1,5 +1,8 @@
 package com.barclays.LibrarySystemAPI.controller;
 
+import com.barclays.LibrarySystemAPI.dto.AddressDTO;
+import com.barclays.LibrarySystemAPI.dto.UserRequestDTO;
+import com.barclays.LibrarySystemAPI.model.Address;
 import com.barclays.LibrarySystemAPI.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,6 +25,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
 @Sql("classpath:test-data.sql")
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -51,14 +56,14 @@ class UserControllerMockHttpReqquestTest {
 
         assertAll("Testing from a test-data.sql file",
                 () -> assertEquals(expectedUserListLength, actualUserList.length),
-                () -> assertEquals("Tolu Adetomiwa", actualUserList[0].getName()));
+                () -> assertEquals("Drake Wesley", actualUserList[0].getName()));
 
     }
 
     @Test
     void findUserById() throws Exception {
-        String  expectedUserName = "Tolu Adetomiwa";
-        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}", 10)
+        String  expectedUserName = "Drake Wesley";
+        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}", 1)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
@@ -67,22 +72,21 @@ class UserControllerMockHttpReqquestTest {
         String contentAsString = result.getResponse().getContentAsString();
         User actualUser = mapper.readValue(contentAsString, User.class);
 
-        assertAll("Testing from a test-data.sql file to find users by ID ",
+        assertAll("Testing from mySql file to find users by ID ",
                 () -> assertEquals(expectedUserName, actualUser.getName()));
-
-
 
     }
 
     @Test
     void createUser() {
+
     }
 
     @Test
     void getUser() throws Exception {
         int expectedLength = 1;
-        String  expectedUserEmail = "damibankole@gmail.com";
-        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/user/search?name=Dami")
+        String  expectedUserEmail = "edsheeran@gmail.com";
+        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/user/search?name=Ed")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
@@ -99,10 +103,10 @@ class UserControllerMockHttpReqquestTest {
 
     @Test
     void updateUser() throws Exception {
-        String OldEmailAddress= "tolu2adetomiwa@gmail.com";
-        String  updatedEmailAddress = "tolu2adetomiwa@gmail.com";
+        String OldEmailAddress= "edsheeran@gmail.com";
+        String  updatedEmailAddress = "edsheeran2@gmail.com";
 
-        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}", 10)
+        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}", 2)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
@@ -119,7 +123,7 @@ class UserControllerMockHttpReqquestTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
-        ResultActions resultAction3 = this.mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}", 10)
+        ResultActions resultAction3 = this.mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}", 2)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
@@ -134,10 +138,10 @@ class UserControllerMockHttpReqquestTest {
 
     @Test
     void deleteUser() throws Exception {
-        Long userIdToDelete = 10L;
+        Long userIdToDelete = 4L;
 
-        int expectedLengthAfterDeletion = 2;
-        String  expectedUserEmail = "toluadetomiwa@gmail.com";
+        int expectedLengthAfterDeletion = 3;
+        String  expectedUserEmail = "bryanhansen@gmail.com";
         ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.delete("/delete/{id}" ,userIdToDelete)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
@@ -152,7 +156,7 @@ class UserControllerMockHttpReqquestTest {
         String contentAsString = result.getResponse().getContentAsString();
         User[] actualUserList = mapper.readValue(contentAsString, User[].class);
 
-        assertAll("Testing from a test-data.sql file to find users by ID ",
+        assertAll("Testing from a mysql file to delete by ID ",
                 () -> assertEquals(expectedLengthAfterDeletion, actualUserList.length),
                 () -> assertFalse(Arrays.stream(actualUserList)
                 .anyMatch(user -> expectedUserEmail.equals(user.getEmail()))));

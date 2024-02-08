@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "RESERVEDITEM")
+@Table(name = "RESERVED_ITEM")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +20,7 @@ public class ReservedItem {
     @Enumerated(EnumType.STRING)
     ItemType itemType;
     private String date;
-    private int borrowing_period;
+    private int period;
     @ManyToOne
     @JsonBackReference
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)

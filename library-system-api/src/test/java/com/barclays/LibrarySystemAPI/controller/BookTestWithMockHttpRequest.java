@@ -1,5 +1,6 @@
 package com.barclays.LibrarySystemAPI.controller;
 
+import com.barclays.LibrarySystemAPI.model.Author;
 import com.barclays.LibrarySystemAPI.model.Book;
 import com.barclays.LibrarySystemAPI.model.Genre;
 import com.barclays.LibrarySystemAPI.model.Movie;
@@ -17,6 +18,9 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,13 +36,15 @@ class BookTestWithMockHttpRequest {
     MockMvc mockMvc;
 
 
+
     ObjectMapper mapper =new ObjectMapper();
     ResultActions resultActions;
 
     @Test
     void searchBookByTitle() throws Exception {
-        Long expectedBookId = 600L;
-        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/book?title=Blah Blah sheep")
+        Long expectedBookId = 15L;
+        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/book")
+                        .param("title", "To Kill a Mockingbird")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
@@ -54,7 +60,7 @@ class BookTestWithMockHttpRequest {
 
     @Test
     void findAllBooks() throws Exception {
-        int expectedLength = 4;
+        int expectedLength = 7;
         ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/books")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
@@ -64,17 +70,17 @@ class BookTestWithMockHttpRequest {
         String contentAsString = result.getResponse().getContentAsString();
         Book[] books = mapper.readValue(contentAsString, Book[].class);
 
-        assertAll("Testing from a test-data.sql file",
+        assertAll("Testing from sql database",
                 () -> assertEquals(expectedLength, books.length),
-                () -> assertEquals("Mirror Mirror", books[3].getTitle()));
+                () -> assertEquals("Pride and Prejudice", books[3].getTitle()));
 
 
     }
 
     @Test
     void searchByAuthor() throws Exception {
-        int expectedLength = 2;
-        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/book/author?name=Wole Shoyinka")
+        int expectedLength = 1;
+        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/book/author?name=Scott Fitzgerald")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
@@ -85,13 +91,13 @@ class BookTestWithMockHttpRequest {
 
         assertAll("Testing from a test-data.sql file",
                 () -> assertEquals(expectedLength, books.length),
-                () -> assertEquals(Genre.FICTION, books[0].getGenre()));
+                () -> assertEquals(Genre.ROMANCE, books[0].getGenre()));
 
     }
 
     @Test
     void searchByGenre() throws Exception {
-        int expectedLength = 2;
+        int expectedLength = 3;
         ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/book/genre?genre=FICTION")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
@@ -103,16 +109,64 @@ class BookTestWithMockHttpRequest {
 
         assertAll("Testing from a test-data.sql file",
                 () -> assertEquals(expectedLength, books.length),
-                () -> assertEquals(800, books[1].getId()));
+                () -> assertEquals(16, books[1].getId()));
 
 
     }
 
     @Test
-    void createBook() {
+    void searchByAvailability() throws Exception {
+        int expectedLength = 7;
+        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.get("/book/availability")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        MvcResult result = resultActions.andReturn();
+        String contentAsString = result.getResponse().getContentAsString();
+        Book[] books = mapper.readValue(contentAsString, Book[].class);
+
+        assertAll("Testing from a test-data.sql file",
+                () -> assertEquals(expectedLength, books.length));
     }
 
     @Test
-    void deleteBook() {
+    void createBook() throws Exception {
+        Author newAuthor = new Author();
+        newAuthor.setName("Bryan Hansen");
+
+        // Create a new book object
+        Book newBook = new Book();
+        newBook.setTitle("Java Bootcamp");
+        newBook.setAuthor(newAuthor);
+                newBook.setQuantity(10);
+                newBook.setAvailable(true);
+                newBook.setGenre(Genre.ROMANCE);
+
+
+        String bookJson = mapper.writeValueAsString(newBook);
+
+        // Perform POST request to create the book
+        ResultActions resultActions = this.mockMvc.perform(MockMvcRequestBuilders.post("/book/create")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(bookJson)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        // Extract the created book from the response
+        MvcResult result = resultActions.andReturn();
+        String contentAsString = result.getResponse().getContentAsString();
+        Book createdBook = mapper.readValue(contentAsString, Book.class);
+
+        // Optionally, assert that the created book matches the expected properties
+        assertAll("Testing createBook endpoint",
+                () -> assertNotNull(createdBook.getId()),
+                () -> assertEquals(newBook.getTitle(), createdBook.getTitle())
+                // Add assertions for other properties if needed
+        );
     }
+
+//    @Test
+//    void deleteBook() {
+//    }
 }
