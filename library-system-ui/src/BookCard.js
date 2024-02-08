@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useCart } from './CartContext';
 
 const CardContainer = styled.div`
   width: 30%;
@@ -34,17 +35,49 @@ const AddToCart = styled.button`
   border-radius: 5px;
 `;
 
+const SuccessMessage = styled.p`
+  color: green;
+`;
+
+const ErrorMessage = styled.p`
+  color: red;
+`;
+
 const BooksCard = ({ book }) => {
+  const { addToCart } = useCart(); 
+  const [isAdded, setIsAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    try {
+      const itemType = 'book'; 
+      addToCart({ ...book, type: itemType });
+      setIsAdded(true);
+    } catch (error) {
+      setIsAdded(false);
+    }
+  };
+
+  useEffect(() => {
+    let timer;
+    if (isAdded) {
+      timer = setTimeout(() => {
+        setIsAdded(false);
+      }, 2000); 
+    }
+    return () => clearTimeout(timer);
+  }, [isAdded]);
+
   return (
     <CardContainer>
-      <BookImage src={book.imgUrl} />
-      <br></br>
+      <BookImage src={book.imgUrl} alt={`Cover of ${book.title}`} />
       <Description>Title: {book.title}</Description>
       <Genre>Genre: {book.genre}</Genre>
-      <br></br>
-      <AddToCart>Add to cart</AddToCart>
+      <AddToCart onClick={handleAddToCart}>Add to cart</AddToCart>
+      {isAdded && <SuccessMessage>Item added to cart successfully!</SuccessMessage>}
     </CardContainer>
   );
 };
 
+
 export default BooksCard;
+

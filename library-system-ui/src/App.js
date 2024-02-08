@@ -5,24 +5,28 @@ import Books from './Books';
 import Movies from './Movies';
 import Periodicals from './Periodicals';
 import Cart from './Cart';
+import { CartProvider } from './CartContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = () => {
   return (
+    <CartProvider> 
       <div className="App">
         <NavBar />
         <Routes>
-          <Route path="/" element={<MainContent />} />  // Home route shows MainContent
-          <Route path="/books" element={<Books />} />  // Books route
-          <Route path="/movies" element={<Movies />} />  // Movies route
-          <Route path="/periodicals" element={<Periodicals />} />  // Periodicals route
-          <Route path="/cart" element={<Cart />} />  // Cart route
+          <Route path="/" element={<MainContent />} /> {/* Home route shows MainContent */}
+          <Route path="/books" element={<Books />} /> {/* Books route */}
+          <Route path="/movies" element={<Movies />} /> {/* Movies route */}
+          <Route path="/periodicals" element={<Periodicals />} /> {/* Periodicals route */}
+          <Route path="/cart" element={<Cart />} /> {/* Cart route */}
         </Routes>
         <Footer />
       </div>
+    </CartProvider>
   );
-}
+};
+
 
 
 const NavBar = () => {
