@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
-  width: 30%;
+  width: 35%;
   margin: 40px;
   display: flex;
   flex-direction: column;
@@ -19,13 +19,16 @@ const Genre = styled.div`
   text-align: center;
 `;
 
-const MovieImage = styled.img`
-  height: 50px;
+const PublicationDate = styled.div`
+  text-align: center;
+`;
+const BookImage = styled.img`
+  height: 100px;
   width: 98%;
   object-fit: cover;
 `;
 
-const AddToCart = styled.button`
+const ViewButton = styled.button`
   text-align: center;
   background-color: #f0f0f0;
   color: #333;
@@ -34,17 +37,20 @@ const AddToCart = styled.button`
   border-radius: 5px;
 `;
 
-const MovieCard = ({ movie }) => {
+const PeriodicalsCard = ({ periodical }) => {
   return (
     <CardContainer>
-      <MovieImage src={movie.imgUrl} />
+      <BookImage src={periodical.imgUrl} />
       <br></br>
-      <Description>Title: {movie.title}</Description>
-      <Genre>Genre: {movie.genre}</Genre>
+      <Description>Title: {periodical.periodicalName}</Description>
+      <Genre> Publication Type: {periodical.type}</Genre>
+      <PublicationDate>
+        Publication Date: {periodical.publicationDate}
+      </PublicationDate>
+
       <br></br>
-      <AddToCart>Add to cart</AddToCart>
+      <ViewButton>ViewButton</ViewButton>
     </CardContainer>
   );
 };
-
-export default MovieCard;
+export default PeriodicalsCard;

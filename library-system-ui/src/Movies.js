@@ -11,28 +11,34 @@ const Movies = () => {
       const fetchData = async () => {
         try {
           const response = await fetch("http://localhost:8080/movie");
-  
           const data = await response.json();
           setMovieList(data);
-          setLoading(false);
         } catch (error) {
           console.error("error fetching data", console.error());
+        }finally{
+          setLoading(false);
         }
       };
       fetchData();
     }, []);
 
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <div className="movies-page-container">
         
-        <div className="rectangle-left"></div>
-        <div className="rectangle-right"></div>
+        {/* <div className="rectangle-left"></div>
+        <div className="rectangle-right"></div> */}
         <FilterSidebar/>
+        <ul>
         {movieList.map((movie) => (
-              <li key={movie.id}>
-                <MovieCard movie={movie} />
-              </li>
-            ))}
+          <li key={movie.id}>
+            <MovieCard movie={movie} />
+          </li>
+        ))}
+      </ul>
         
       </div>
     
