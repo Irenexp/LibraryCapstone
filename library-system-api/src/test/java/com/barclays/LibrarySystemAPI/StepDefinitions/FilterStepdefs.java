@@ -1,6 +1,5 @@
 package com.barclays.LibrarySystemAPI.StepDefinitions;
 
-import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeStep;
@@ -13,7 +12,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.List;
 
@@ -28,6 +26,11 @@ public class FilterStepdefs {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
+    @AfterStep
+    public void tearDown() {
+        driver.quit();
+    }
+
     @Given("I am on the Books page at {string}")
     public void iAmOnTheBooksPageAt(String url) {
         driver.get(url);
