@@ -23,6 +23,10 @@ const Director = styled.div`
   text-align: center;
 `;
 
+const Rating = styled.div`
+  text-align: center;
+`;
+
 const MovieImage = styled.img`
   height: 50px;
   width: 98%;
@@ -46,6 +50,7 @@ const MovieCard = ({ movie }) => {
       <Description>Title: {movie.title}</Description>
       <Director>Director: {movie.director}</Director>
       <Genre>Genre: {movie.genre}</Genre>
+      <Rating>Rating: {movie.rating}</Rating>
       <br></br>
       <AddToCart>Add to cart</AddToCart>
     </CardContainer>

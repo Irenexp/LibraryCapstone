@@ -5,6 +5,7 @@ import com.barclays.LibrarySystemAPI.model.Movie;
 import com.barclays.LibrarySystemAPI.service.MovieService;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -21,14 +22,22 @@ public class MovieController {
         return movieService.searchMovieByTitle(title);
     }
 
-    @GetMapping("/movie/author")
+    @GetMapping("/movie/director")
     public List<Movie> searchMovieByDirectorContaining(@RequestParam("name")String director){
         return movieService.searchMovieByDirectorContaining(director);
     }
 
     @GetMapping("/movie/genre")
-    public List<Movie> searchMovieByGenre(@PathParam("genre") Genre genre){
+    public List<Movie> searchMovieByGenre(@RequestParam("genre") Genre genre){
         return movieService.searchMovieByGenre(genre);
+    }
+
+    @GetMapping("/movie/rating")
+    public ResponseEntity<List<Movie>> getMoviesByRatingRange(
+            @RequestParam(name = "minRating", required = false) Double minRating,
+            @RequestParam(name = "maxRating", required = false) Double maxRating) {
+        List<Movie> movies = movieService.findMoviesByRatingRange(minRating, maxRating);
+        return ResponseEntity.ok(movies);
     }
 
     @GetMapping("/movie")

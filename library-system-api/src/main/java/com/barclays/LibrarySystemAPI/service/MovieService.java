@@ -17,4 +17,7 @@ public interface MovieService {
     Movie save(Movie movie);
 
     void  deleteMovie(Long id);
+
+    List<Movie> findMoviesByRatingRange(Double minRating, Double maxRating);
+
 }

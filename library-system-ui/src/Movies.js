@@ -8,11 +8,35 @@ const Movies = () => {
 
     const [movieList, setMovieList] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [availabilityFilter, setAvailabilityFilter] = useState('');
+    const [genreFilter, setGenreFilter] = useState('');
+    const [directorFilter, setDirectorFilter] = useState('');
+    const [ratingFilter, setRatingFilter] = useState('');
+
+
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch("http://localhost:8080/movie");
-  
+          let url = new URL("http://localhost:8080/movie");
+
+          if (genreFilter) {
+            url.pathname += "/genre";
+            url.searchParams.append("genre", genreFilter);
+          }
+
+          if (directorFilter) {
+            url.pathname += "/director";
+            url.searchParams.append("name", directorFilter); // Make sure to use 'name', not 'director'
+          }
+
+          if (ratingFilter && ratingFilter.min !== undefined && ratingFilter.max !== undefined) {
+            url.pathname += "/rating";
+            url.searchParams.append("minRating", ratingFilter.min);
+            url.searchParams.append("maxRating", ratingFilter.max);
+          }
+              
+          const response = await fetch(url.toString());
+
           const data = await response.json();
           setMovieList(data);
           setLoading(false);
@@ -21,14 +45,16 @@ const Movies = () => {
         }
       };
       fetchData();
-    }, []);
+    }, [genreFilter, availabilityFilter, directorFilter, ratingFilter]);
 
 
     return (
       <div className="main-container">
         <div className="filter-container">
           <h5>Filter</h5>
-          <Filter />
+          <Filter setAvailabilityFilter={setAvailabilityFilter} 
+          setGenreFilter={setGenreFilter} setDirectorFilter={setDirectorFilter} 
+          setRatingFilter = {setRatingFilter}/>
         </div>
         <div className="movie-container">
           <h2>List of Movies that can be borrowed in the library</h2>
@@ -46,19 +72,19 @@ const Movies = () => {
     );
   }
 
-const Filter = () => {
+const Filter = ({setAvailabilityFilter, setGenreFilter, setDirectorFilter, setRatingFilter }) => {
   return( 
     <div>
-  <div><Availability /></div>
-  <div><Genre /></div>
-  <div><Director /></div>
-  <div><Rating /></div>
+  <div><Availability setAvailabilityFilter={setAvailabilityFilter} /></div>
+  <div><Genre setGenreFilter = {setGenreFilter} /></div>
+  <div><Director setDirectorFilter = {setDirectorFilter}/></div>
+  <div><Rating setRatingFilter = {setRatingFilter}/></div>
   </div>
   );
 
 };
 
-const Availability = () => {
+const Availability = ( {setAvailabilityFilter} ) => {
   return (
     <Dropdown className="availability-drpdw">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -66,14 +92,18 @@ const Availability = () => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Available</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Not Available</Dropdown.Item>
+        <Dropdown.Item onClick={() => setAvailabilityFilter("available")}>
+          Available
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => setAvailabilityFilter("unavailable")}>
+          Not Available
+        </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
 };
 
-const Genre = () => {
+const Genre = ( {setGenreFilter} ) => {
   return (
     <Dropdown className="genre-drpdw">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -81,17 +111,27 @@ const Genre = () => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Fiction</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Romance</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Action</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Scientific</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Thriller</Dropdown.Item>
+        <Dropdown.Item onClick={() => setGenreFilter("FICTION")}>
+          Fiction
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => setGenreFilter("ROMANCE")}>
+          Romance
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => setGenreFilter("ACTION")}>
+          Action
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => setGenreFilter("SCIENTIFIC")}>
+          Scientific
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => setGenreFilter("THRILLER")}>
+          Thriller
+        </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
 };
 
-const Director = () => {
+const Director = ({setDirectorFilter}) => {
   return (
     <Dropdown className="director-drpdw">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -99,28 +139,46 @@ const Director = () => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Christopher Nolan</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Francis Ford Coppola</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Frank Darabont</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">James Cameron</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Quentin Tarantino</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Robert Zemeckis</Dropdown.Item>
+        <Dropdown.Item onClick={() => setDirectorFilter("Christopher Nolan")}>
+          Christopher Nolan
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => setDirectorFilter("Francis Ford Coppola")}>
+          Francis Ford Coppola
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => setDirectorFilter("Frank Darabont")}>
+          Frank Darabont
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => setDirectorFilter("James Cameron")}>
+          James Cameron
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => setDirectorFilter("Quentin Tarantino")}>
+          Quentin Tarantino
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => setDirectorFilter("Robert Zemeckis")}>
+          Robert Zemeckis
+        </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
 };
 
-const Rating = () => {
+const Rating = ({ setRatingFilter }) => {
   return (
     <Dropdown className="rating-drpdw">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
-        Rating
+        Rating Range
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">9</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">8</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">7</Dropdown.Item>
+        <Dropdown.Item onClick={() => setRatingFilter({ min: 9, max: 10 })}>
+          9 - 10
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => setRatingFilter({ min: 8, max: 9 })}>
+          8 - 9
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => setRatingFilter({ min: 7, max: 8 })}>
+          7 - 8
+        </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

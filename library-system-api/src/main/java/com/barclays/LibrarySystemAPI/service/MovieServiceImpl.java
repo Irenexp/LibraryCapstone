@@ -55,6 +55,12 @@ public class MovieServiceImpl implements MovieService {
          movieRepository.deleteById(movie.getId());
     }
 
+    @Override
+    public List<Movie> findMoviesByRatingRange(Double minRating, Double maxRating) {
+        return movieRepository.findByRatingBetween(minRating, maxRating);
+    }
+
+
     @Autowired
     public MovieServiceImpl(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
