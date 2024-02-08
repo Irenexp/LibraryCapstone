@@ -19,6 +19,14 @@ const Genre = styled.div`
   text-align: center;
 `;
 
+const Director = styled.div`
+  text-align: center;
+`;
+
+const Rating = styled.div`
+  text-align: center;
+`;
+
 const MovieImage = styled.img`
   height: 50px;
   width: 98%;
@@ -36,14 +44,16 @@ const AddToCart = styled.button`
 
 const MovieCard = ({ movie }) => {
   return (
-    <CardContainer>
-      <MovieImage src={movie.imgUrl} />
-      <br></br>
-      <Description>Title: {movie.title}</Description>
-      <Genre>Genre: {movie.genre}</Genre>
-      <br></br>
-      <AddToCart>Add to cart</AddToCart>
-    </CardContainer>
+      <CardContainer>
+        <MovieImage src={movie.imgUrl} />
+        <br></br>
+        <Description>Title: {movie.title}</Description>
+        <Genre>Genre: {movie.genre}</Genre>
+        <Director>Director: {movie.director}</Director>
+        <Rating>Rating: {movie.rating}</Rating>
+        <br></br>
+        <AddToCart>Add to cart</AddToCart>
+      </CardContainer>
   );
 };
 
