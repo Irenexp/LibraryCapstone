@@ -22,5 +22,8 @@ public class PeriodicalController {
         return periodicalService.findAllPeriodicals();
     }
 
-
+    @GetMapping("periodical/name")
+    public List <Periodical> findPeriodicalByPeriodicalName(String periodicalName) {
+        return periodicalService.findPeriodicalByPeriodicalName(periodicalName);
+    }
 }

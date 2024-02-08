@@ -24,4 +24,10 @@ public class PeriodicalServiceImpl implements PeriodicalService {
         periodicalIts.forEach(periodicals::add);
         return periodicals;
     }
+
+    @Override
+    public List <Periodical> findPeriodicalByPeriodicalName(String periodicalName){
+      List<Periodical> periodicalListByName =  periodicalRepository.findPeriodicalByPeriodicalName(periodicalName);
+    return periodicalListByName;
+    }
 }
