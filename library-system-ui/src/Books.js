@@ -1,4 +1,4 @@
-import Dropdown from "react-bootstrap/Dropdown";
+import { Dropdown } from 'react-bootstrap';
 import "./Books.css";
 import BooksCard from "./BookCard";
 import React, { useEffect, useState } from "react";
