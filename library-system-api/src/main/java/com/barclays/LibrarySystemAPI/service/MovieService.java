@@ -1,5 +1,6 @@
 package com.barclays.LibrarySystemAPI.service;
 
+import com.barclays.LibrarySystemAPI.model.Book;
 import com.barclays.LibrarySystemAPI.model.Genre;
 import com.barclays.LibrarySystemAPI.model.Movie;
 
@@ -18,6 +19,5 @@ public interface MovieService {
 
     void  deleteMovie(Long id);
 
-    List<Movie> findMoviesByRatingRange(Double minRating, Double maxRating);
-
+    List<Movie> searchByIsAvailable(boolean isAvailable);
 }

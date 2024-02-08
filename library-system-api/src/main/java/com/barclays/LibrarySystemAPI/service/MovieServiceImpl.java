@@ -1,6 +1,7 @@
 package com.barclays.LibrarySystemAPI.service;
 
 import com.barclays.LibrarySystemAPI.exception.IdNotFoundException;
+import com.barclays.LibrarySystemAPI.model.Book;
 import com.barclays.LibrarySystemAPI.model.Genre;
 import com.barclays.LibrarySystemAPI.model.Movie;
 import com.barclays.LibrarySystemAPI.repository.MovieRepository;
@@ -56,10 +57,10 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> findMoviesByRatingRange(Double minRating, Double maxRating) {
-        return movieRepository.findByRatingBetween(minRating, maxRating);
+    public List<Movie> searchByIsAvailable(boolean isAvailable) {
+        List<Movie> movies = movieRepository.searchByIsAvailable(isAvailable);
+        return movies;
     }
-
 
     @Autowired
     public MovieServiceImpl(MovieRepository movieRepository) {

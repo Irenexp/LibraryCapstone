@@ -35,6 +35,12 @@ public class BookController {
         return bookService.searchByAuthor(authorName);
     }
 
+    @GetMapping("book/availability")
+    public List<Book> searchByAvailability(@RequestParam("isAvailable") boolean isAvailable){
+        return bookService.searchByIsAvailable(isAvailable);
+    }
+
+
     @GetMapping("book/genre")
     public List<Book> searchByGenre(@RequestParam("genre") Genre genre){
         return bookService.searchBookByGenre(genre);

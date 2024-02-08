@@ -20,4 +20,6 @@ public interface BookRepository extends CrudRepository<Book, Long> {
     List<Book> searchByAuthorNameContaining(String authorName);
     List<Book> searchBookByGenre(Genre genre);
 
+
+   List<Book> searchByIsAvailable(boolean isAvailable);
 }
