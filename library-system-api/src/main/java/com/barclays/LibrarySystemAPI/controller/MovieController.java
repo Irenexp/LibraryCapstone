@@ -42,8 +42,8 @@ public class MovieController {
     public ResponseEntity<List<Movie>> getMoviesByRatingRange(
             @RequestParam(name = "minRating", required = false) Double minRating,
             @RequestParam(name = "maxRating", required = false) Double maxRating) {
-        List<Movie> movies = movieService.findMoviesByRatingRange(minRating, maxRating);
-        return ResponseEntity.ok(movies);
+            List<Movie> movies = movieService.findMoviesByRatingRange(minRating, maxRating);
+            return ResponseEntity.ok(movies);
     }
 
     @GetMapping("/movie")
