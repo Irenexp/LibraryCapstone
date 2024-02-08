@@ -1,17 +1,32 @@
 package com.barclays.LibrarySystemAPI.StepDefinitions;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class SiteNavigationStepdefs {
 
     WebDriver driver;
+//    WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+//    driverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("home-link")));
+
+    @Before
+    public void setUp() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+    }
 
     @Given("I have a website open")
     public void iHaveAWebsiteOpen() {
@@ -27,7 +42,7 @@ public class SiteNavigationStepdefs {
     }
 
     @Then("I see the {string} page")
-    public void iSeeThePage(String pageTitle) {
+    public void iSeeThePage_titlePage(String pageTitle) {
         String tabTitle = driver.getTitle();
         Assertions.assertTrue(tabTitle.contains(pageTitle));
     }
@@ -35,5 +50,20 @@ public class SiteNavigationStepdefs {
     @Then("I close the page")
     public void iCloseThePage() {
         driver.close();
+        driver.quit();
+    }
+
+
+    @When("Find the element by id {string}")
+    public void findTheElementByIdElement_id(String elementId) {
+        WebElement element = driver.findElement(By.id(elementId));
+        element.click();
+    }
+
+    @Given("I have a website open to {string}")
+    public void iHaveAWebsiteOpenTo(String url2) {
+        driver.get(url2);
     }
 }
+
+
