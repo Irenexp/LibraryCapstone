@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
-  width: 35%;
+  width: 30%;
   margin: 40px;
   display: flex;
   flex-direction: column;
@@ -44,16 +44,16 @@ const AddToCart = styled.button`
 
 const MovieCard = ({ movie }) => {
   return (
-    <CardContainer>
-      <MovieImage src={movie.imgUrl} />
-      <br></br>
-      <Description>Title: {movie.title}</Description>
-      <Director>Director: {movie.director}</Director>
-      <Genre>Genre: {movie.genre}</Genre>
-      <Rating>Rating: {movie.rating}</Rating>
-      <br></br>
-      <AddToCart>Add to cart</AddToCart>
-    </CardContainer>
+      <CardContainer>
+        <MovieImage src={movie.imgUrl} />
+        <br></br>
+        <Description>Title: {movie.title}</Description>
+        <Genre>Genre: {movie.genre}</Genre>
+        <Director>Director: {movie.director}</Director>
+        <Rating>Rating: {movie.rating}</Rating>
+        <br></br>
+        <AddToCart>Add to cart</AddToCart>
+      </CardContainer>
   );
 };
 
