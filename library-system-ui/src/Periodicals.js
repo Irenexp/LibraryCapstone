@@ -54,30 +54,12 @@ const Filter = ({ setPeriodicalNameFilter }) => {
   return (
     <div>
       <div>
-        <Availability />
-      </div>
-      <div>
         <PeriodicalsName setPeriodicalNameFilter={setPeriodicalNameFilter} />
       </div>
       <div>
         <Type />
       </div>
     </div>
-  );
-};
-
-const Availability = () => {
-  return (
-    <Dropdown className="availability-drpdw">
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
-        Availability
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Available</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Not Available</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
   );
 };
 
