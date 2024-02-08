@@ -8,4 +8,6 @@ public interface PeriodicalService {
     List<Periodical> findAllPeriodicals();
 
     List <Periodical> findPeriodicalByPeriodicalName(String periodicalName);
+
+    List<Periodical> findPeriodicalByType(String periodicalType);
 }

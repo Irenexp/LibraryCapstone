@@ -7,6 +7,7 @@ const Periodicals = () => {
   const [periodicalList, setPeriodicalList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [periodicalNameFilter, setPeriodicalNameFilter] = useState();
+  const [periodicalTypeFilter, setPeriodicalTypeFilter] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,6 +16,15 @@ const Periodicals = () => {
         if (periodicalNameFilter) {
           url = `http://localhost:8080/periodical/name?periodicalName=${periodicalNameFilter}`;
         }
+
+        if (periodicalTypeFilter) {
+          url = `http://localhost:8080/periodicals/type?type=${periodicalTypeFilter}`;
+        }
+
+        // if (periodicalNameFilter) {
+        //   url.pathname += "/name";
+        //   url.searchParams.append("periodicalName", periodicalNameFilter);
+        // }
         const response = await fetch(url);
 
         const data = await response.json();
@@ -25,13 +35,16 @@ const Periodicals = () => {
       }
     };
     fetchData();
-  }, [periodicalNameFilter]);
+  }, [periodicalNameFilter, periodicalTypeFilter]);
 
   return (
     <div className="main-container">
       <div className="filter-container">
         <h5>Filter</h5>
-        <Filter setPeriodicalNameFilter={setPeriodicalNameFilter} />
+        <Filter
+          setPeriodicalNameFilter={setPeriodicalNameFilter}
+          setPeriodicalTypeFilter={setPeriodicalTypeFilter}
+        />
       </div>
       <div className="periodicals-container">
         <h2>List of Periodical that can be viewed in the library</h2>
@@ -50,14 +63,14 @@ const Periodicals = () => {
   );
 };
 
-const Filter = ({ setPeriodicalNameFilter }) => {
+const Filter = ({ setPeriodicalNameFilter, setPeriodicalTypeFilter }) => {
   return (
     <div>
       <div>
         <PeriodicalsName setPeriodicalNameFilter={setPeriodicalNameFilter} />
       </div>
       <div>
-        <Type />
+        <Type setPeriodicalTypeFilter={setPeriodicalTypeFilter} />
       </div>
     </div>
   );
@@ -67,7 +80,7 @@ const PeriodicalsName = ({ setPeriodicalNameFilter }) => {
   return (
     <Dropdown className="periodicals-drpdw">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
-        Periodical Name
+        Periodical Title
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
@@ -89,7 +102,7 @@ const PeriodicalsName = ({ setPeriodicalNameFilter }) => {
   );
 };
 
-const Type = () => {
+const Type = ({ setPeriodicalTypeFilter }) => {
   return (
     <Dropdown className="type-drpdw">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -97,9 +110,15 @@ const Type = () => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Magazine</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Journal</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Newsletter</Dropdown.Item>
+        <Dropdown.Item onClick={() => setPeriodicalTypeFilter("Magazine")}>
+          Magazine
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => setPeriodicalTypeFilter("Journal")}>
+          Journal
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => setPeriodicalTypeFilter("Newsletter")}>
+          Newsletter
+        </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

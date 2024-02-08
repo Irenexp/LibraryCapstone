@@ -1,5 +1,6 @@
 package com.barclays.LibrarySystemAPI.repository;
 
+import com.barclays.LibrarySystemAPI.model.Book;
 import com.barclays.LibrarySystemAPI.model.Movie;
 import com.barclays.LibrarySystemAPI.model.Periodical;
 import org.springframework.data.jpa.repository.Query;
@@ -16,6 +17,11 @@ public interface PeriodicalRepository  extends CrudRepository<Periodical, Long> 
 
 
     List<Periodical> findAll();
+
+
+    @Query("SELECT new Periodical (p.id, p.periodicalName, p.publicationDate,p.type, p.imgUrl) FROM Periodical  p WHERE p.type LIKE %:type%")
+    List<Periodical> findPeriodicalByType(String type );
+
 
 
 }

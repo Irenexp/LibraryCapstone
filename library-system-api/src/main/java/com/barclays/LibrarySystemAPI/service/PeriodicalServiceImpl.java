@@ -30,4 +30,15 @@ public class PeriodicalServiceImpl implements PeriodicalService {
       List<Periodical> periodicalListByName =  periodicalRepository.findPeriodicalByPeriodicalName(periodicalName);
     return periodicalListByName;
     }
+
+
+     @Override
+     public List<Periodical> findPeriodicalByType(String type){
+         List<Periodical> periodicalsType = periodicalRepository.findPeriodicalByType(type );
+         return periodicalsType;
+     }
+
+
+
+
 }
