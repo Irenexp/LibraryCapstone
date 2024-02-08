@@ -21,8 +21,12 @@ main-container {
 .availability-drpdw .dropdown-toggle,
 .periodicals-drpdw .dropdown-toggle,
 .type-drpdw .dropdown-toggle {
-  background-color: #00008b !important; /* Dark blue background */
-  border: 1px solid #00008b !important; /* Dark blue border */
+  margin-bottom: 10px;
+  background-color: #0d0d49 !important; /* Dark blue background */
+  border: 1px solid #25254b !important; /* Dark blue border */
+  width: 98%; /* Make button width fill the container */
+  min-height: 40px;
+  text-align: left;
 }
 
 /* You may also want to add styles for hover, focus, and active states */
@@ -32,14 +36,25 @@ main-container {
 .availability-drpdw .dropdown-toggle:focus,
 .periodicals-drpdw .dropdown-toggle:focus,
 .type-drpdw .dropdown-toggle:focus {
-  background-color: #0000cd !important; /* Slightly lighter blue for hover/focus */
+  background-color: #a4a4e2 !important;
+  box-sizing: border-box;
 }
   
   /* Ensure this selector is more specific or add !important to override default styles if necessary */
   .dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.25rem rgba(0, 0, 139, 0.5); /* Focus shadow in dark blue */
+    box-shadow: 0 0 0 0.25rem rgba(0, 0, 139, 0.5);; /* Focus shadow in dark blue */
   }
-  
+  .dropdown-toggle::after {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .dropdown-toggle {
+    padding-right: 30px;
+  }
+
+
   .periodicals-container {
     flex: 1; /* Fill the remaining space */
     height: calc(100vh - 20px); /* Match filter container height */
@@ -60,6 +75,14 @@ main-container {
     margin: 10px; /* Adjust margin to your preference */
     /* Other styles for the card */
   }
+  .filter {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: underline;
+  }
+  
 
 
   
