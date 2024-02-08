@@ -5,6 +5,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 
 @CucumberContextConfiguration
-@SpringBootTest(classes = LibrarySystemApiApplication.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest()
 public class CucumberSpringConfiguration {
 }

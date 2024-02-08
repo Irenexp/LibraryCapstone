@@ -1,4 +1,38 @@
-#Feature: Filter Navigation
-#  Scenario: I can sort page by filters
-#    Given I am on the book page
-#    When I apply a filter for
+Feature: Filter Navigation
+  Scenario Outline: I can sort the page by filters
+    Given I am on the Books page at "http://localhost:8080/books"
+    When I apply a filter for <Authors>
+
+
+    Examples:
+      | Authors                                           | page_title |
+      | "http://localhost:8080/book/author?name=Dan"      | "React App" |
+#      | "http://localhost:8080/book/author?name=Harper"   | "React App" |
+#      | "http://localhost:8080/book/author?name=Jane"     | "React App  |
+
+
+#
+#  Scenario Outline: I can sort the page by filters
+#    Given I am on the Movies page at "http://localhost:8080/movie"
+#    When I apply a filter for <Ratings>
+#    Then I can see the filtered page at <page_title>
+#
+#
+#    Examples:
+#      | Ratings                                                          | page_title |
+#      | "http://localhost:8080/movie/rating?minRating=7&maxRating=8"     | "React App" |
+#      | "http://localhost:8080/movie/rating?minRating=8&maxRating=9"     | "React App" |
+#      | "http://localhost:8080/movie/rating?minRating=9&maxRating=10"     | "React App  |
+#
+#
+#
+#  Scenario Outline: I can sort the page by filters
+#    Given I am on the Periodicals page at "http://localhost:8080/periodicals"
+#    When I apply a filter for <Type>
+#    Then I can see the filtered page at <page_title>
+#
+#    Examples:
+#      | Type                                                        | page_title |
+#      | "http://localhost:8080/periodicals/type?type=Magazine"      | "ReactApp" |
+#      | "http://localhost:8080/periodicals/type?type=Journal"       | "ReactApp" |
+#      | "http://localhost:8080/periodicals/type?type=Newsletter"    | "ReactApp  |
