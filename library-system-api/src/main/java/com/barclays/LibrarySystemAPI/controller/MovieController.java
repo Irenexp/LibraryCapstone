@@ -1,5 +1,6 @@
 package com.barclays.LibrarySystemAPI.controller;
 
+import com.barclays.LibrarySystemAPI.model.Book;
 import com.barclays.LibrarySystemAPI.model.Genre;
 import com.barclays.LibrarySystemAPI.model.Movie;
 import com.barclays.LibrarySystemAPI.service.MovieService;
@@ -24,6 +25,11 @@ public class MovieController {
     @GetMapping("/movie/author")
     public List<Movie> searchMovieByDirectorContaining(@RequestParam("name")String director){
         return movieService.searchMovieByDirectorContaining(director);
+    }
+
+    @GetMapping("movie/availability")
+    public List<Movie> searchByAvailability(@RequestParam("isAvailable") boolean isAvailable){
+        return movieService.searchByIsAvailable(isAvailable);
     }
 
     @GetMapping("/movie/genre")

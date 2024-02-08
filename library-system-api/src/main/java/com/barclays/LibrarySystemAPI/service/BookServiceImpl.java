@@ -63,6 +63,13 @@ public class BookServiceImpl implements BookService {
         bookRepository.deleteById(book.getId());
     }
 
+    @Override
+    public List<Book> searchByIsAvailable(boolean isAvailable) {
+        List<Book> books = bookRepository.searchByIsAvailable(isAvailable);
+        return books;
+    }
+
+
 
     @Autowired
     public BookServiceImpl(BookRepository bookRepository) {

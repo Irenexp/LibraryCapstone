@@ -1,6 +1,7 @@
 package com.barclays.LibrarySystemAPI.service;
 
 import com.barclays.LibrarySystemAPI.exception.IdNotFoundException;
+import com.barclays.LibrarySystemAPI.model.Book;
 import com.barclays.LibrarySystemAPI.model.Genre;
 import com.barclays.LibrarySystemAPI.model.Movie;
 import com.barclays.LibrarySystemAPI.repository.MovieRepository;
@@ -53,6 +54,12 @@ public class MovieServiceImpl implements MovieService {
     public void  deleteMovie(Long id){
         Movie movie = movieRepository.findById(id).orElseThrow(()-> new IdNotFoundException("Movie Id not found "));
          movieRepository.deleteById(movie.getId());
+    }
+
+    @Override
+    public List<Movie> searchByIsAvailable(boolean isAvailable) {
+        List<Movie> movies = movieRepository.searchByIsAvailable(isAvailable);
+        return movies;
     }
 
     @Autowired

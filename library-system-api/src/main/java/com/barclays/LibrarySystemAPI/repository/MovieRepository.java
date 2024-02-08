@@ -18,5 +18,5 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
      List<Movie> searchMovieByGenre(Genre genre);
 
 
-
+    List<Movie> searchByIsAvailable(boolean isAvailable);
 }
