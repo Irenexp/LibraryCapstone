@@ -70,7 +70,7 @@ public class ReserveServiceImpl implements ReserveService {
         ReservedItem reservedItem = new ReservedItem();
         reservedItem.setItemType(reserveDTO.getItemType());
         reservedItem.setDate(reserveDTO.getDate());
-        reservedItem.setBorrowing_period(7);
+        reservedItem.setPeriod(7);
         reservedItem.setUser(user);
 
         return reserveRepository.save(reservedItem);
