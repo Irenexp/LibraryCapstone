@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface MovieRepository extends CrudRepository<Movie, Long> {
 
-    @Query("SELECT new Movie (m.id, m.title, m.leadActors,m.director,m.screenWriter,m.releaseDate,m.isAvailable,m.quantity,m.genre,m.rating) FROM Movie m WHERE m.title LIKE %:title%")
+    @Query("SELECT new Movie (m.id, m.title, m.imgUrl, m.leadActors,m.director,m.screenWriter,m.releaseDate,m.isAvailable,m.quantity,m.genre,m.rating) FROM Movie m WHERE m.title LIKE %:title%")
     List<Movie> searchByTitle(String title);
 
     List<Movie> searchMovieByDirectorContaining(String director);

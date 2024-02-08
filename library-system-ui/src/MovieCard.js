@@ -10,10 +10,31 @@ const CardContainer = styled.div`
   border: 1px solid black;
   border-radius: 5px;
   padding: 5px;
+  background-color: #15182e; /* Dark blue background */
+  color: white; /* White text */
 `;
 
+const AddToCart = styled.button`
+  text-align: center;
+  background-color: #f0f0f0;
+  color: #333;
+  border: none; /* Remove border or set it to transparent if preferred */
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer; /* Change cursor to pointer to indicate button */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  font-family: 'Raleway';
+  font-style: normal;
+  &:hover {
+    background-color: #1f4f96; /* Slightly lighter blue on hover */
+    color: white; /* Text color remains white */
+  }
+`;
+
+
+
 const SuccessMessage = styled.div`
-  color: green;
+  color: white;
 `;
 
 const Description = styled.div`
@@ -38,14 +59,6 @@ const MovieImage = styled.img`
   object-fit: cover;
 `;
 
-const AddToCart = styled.button`
-  text-align: center;
-  background-color: #f0f0f0;
-  color: #333;
-  border: 3px solid #15182e;
-  padding: 8px 16px;
-  border-radius: 5px;
-`;
 
 const MovieCard = ({ movie }) => {
   const { addToCart } = useCart(); 
@@ -53,7 +66,7 @@ const MovieCard = ({ movie }) => {
 
   const handleAddToCart = () => {
     try {
-      const itemType = 'movie'; // Set the item type directly as 'movie'
+      const itemType = 'movie'; 
       addToCart({ ...movie, type: itemType });
       setIsAdded(true);
     } catch (error) {

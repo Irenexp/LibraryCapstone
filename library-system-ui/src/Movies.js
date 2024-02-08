@@ -12,7 +12,15 @@ const Movies = () => {
     const [genreFilter, setGenreFilter] = useState('');
     const [directorFilter, setDirectorFilter] = useState('');
     const [ratingFilter, setRatingFilter] = useState('');
+    const resetFilters = () => {
+        setAvailabilityFilter('');
+        setGenreFilter('');
+        setDirectorFilter('');
+        setRatingFilter('');
+    };
 
+    const backgroundImageUrl = process.env.PUBLIC_URL + 'capstone_library_image.jpg'; 
+    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -51,12 +59,18 @@ const Movies = () => {
     return (
         <div className="main-container">
             <div className="filter-container">
-                <h5 className = "filter">Filter</h5>
+                <h5 className = "filter">Filters</h5>
                 <Filter setAvailabilityFilter={setAvailabilityFilter}
                         setGenreFilter={setGenreFilter} setDirectorFilter={setDirectorFilter}
-                        setRatingFilter = {setRatingFilter}/>
+                        setRatingFilter = {setRatingFilter}
+                        resetFilters={resetFilters}/>
             </div>
-            <div className="movie-container">
+            <div className="movie-container" style={{
+                  backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${backgroundImageUrl})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+      }}>
                 <h2 className="books-title">Movies</h2>
                 {loading ? (
                     <p>Loading...</p>
@@ -72,13 +86,16 @@ const Movies = () => {
     );
 }
 
-const Filter = ({setAvailabilityFilter, setGenreFilter, setDirectorFilter, setRatingFilter }) => {
+const Filter = ({setAvailabilityFilter, setGenreFilter, setDirectorFilter, setRatingFilter, resetFilters }) => {
     return(
         <div>
             <div><Availability setAvailabilityFilter={setAvailabilityFilter} /></div>
             <div><Genre setGenreFilter = {setGenreFilter} /></div>
             <div><Director setDirectorFilter = {setDirectorFilter}/></div>
             <div><Rating setRatingFilter = {setRatingFilter}/></div>
+            <div> <button className="reset-filters-btn" onClick={resetFilters}>Reset Filters</button>
+        </div>
+            
         </div>
     );
 
@@ -132,9 +149,10 @@ const Genre = ( {setGenreFilter} ) => {
 };
 
 const Director = ({setDirectorFilter}) => {
+    const toggleStyles = { fontFamily: 'Raleway', fontWeight: 900 };
     return (
         <Dropdown className="director-drpdw">
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <Dropdown.Toggle variant="success" id="dropdown-basic" style={toggleStyles}>
                 Director
             </Dropdown.Toggle>
 
@@ -163,9 +181,11 @@ const Director = ({setDirectorFilter}) => {
 };
 
 const Rating = ({ setRatingFilter }) => {
+
+    const toggleStyles = { fontFamily: 'Raleway', fontWeight: 900 };
     return (
         <Dropdown className="rating-drpdw">
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <Dropdown.Toggle variant="success" id="dropdown-basic" style={toggleStyles}>
                 Rating Range
             </Dropdown.Toggle>
 

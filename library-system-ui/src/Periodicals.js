@@ -7,6 +7,10 @@ const Periodicals = () => {
   const [periodicalList, setPeriodicalList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [periodicalNameFilter, setPeriodicalNameFilter] = useState();
+  const resetFilters = () => {
+    setPeriodicalNameFilter('');
+ };
+  const backgroundImageUrl = process.env.PUBLIC_URL + 'capstone_library_image.jpg';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,12 +34,18 @@ const Periodicals = () => {
   return (
     <div className="main-container">
       <div className="filter-container">
-        <h5>Filter</h5>
-        <Filter setPeriodicalNameFilter={setPeriodicalNameFilter} />
+        <h5 className="filter"> Filters</h5>
+        <Filter setPeriodicalNameFilter={setPeriodicalNameFilter}
+        resetFilters={resetFilters} />
       </div>
-      <div className="periodicals-container">
-        <h2>List of Periodical that can be viewed in the library</h2>
-        <h5>List</h5>
+      <div className="periodicals-container" style={{
+        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${backgroundImageUrl})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}>
+        <h2 className= "books-title">Periodicals</h2>
+  
         {loading ? (
           <p>Loading...</p>
         ) : (
@@ -50,7 +60,7 @@ const Periodicals = () => {
   );
 };
 
-const Filter = ({ setPeriodicalNameFilter }) => {
+const Filter = ({ setPeriodicalNameFilter,resetFilters }) => {
   return (
     <div>
       <div>
@@ -59,6 +69,7 @@ const Filter = ({ setPeriodicalNameFilter }) => {
       <div>
         <Type />
       </div>
+      <div><button className="reset-filters-btn" onClick={resetFilters}>Reset Filters</button></div>
     </div>
   );
 };

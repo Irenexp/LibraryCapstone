@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from './CartContext';
-import './Cart.css'; // Make sure the path is correct
+import './Cart.css';
 
 const Cart = () => {
-  const { cartItems, removeFromCart } = useCart();
+  const { cartItems, removeFromCart, clearCart } = useCart();
   const [removedItem, setRemovedItem] = useState(null);
   const [cartItemCount, setCartItemCount] = useState(cartItems.length);
+  const [checkoutSuccess, setCheckoutSuccess] = useState(false); 
 
   useEffect(() => {
     let timer;
@@ -33,41 +34,31 @@ const Cart = () => {
   const handleCheckOut = async () => {
     console.log('Initiating checkout process...');
     try {
+      // Loop through cartItems and send API requests 
       for (const item of cartItems) {
-        // Check if item and item.type exist before accessing item.type.toUpperCase()
-        if (item && item.type) {
-          const reservationDto = {
-            itemType: item.type.toUpperCase(),
-            title: item.title,
-            userId: 1, 
-            date: new Date().toISOString(),
-          };
-  
-          console.log(`Sending API request to reserve ${item.type}: ${item.title}`);
-  
-          const response = await fetch('http://localhost:8080/reservations/reserve', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(reservationDto),
-          });
-  
-          if (!response.ok) {
-            throw new Error(`Failed to reserve ${item.type}: ${item.title}`);
-          }
-  
-          console.log(`Successfully reserved ${item.type}: ${item.title}`);
-        } else {
-          console.error('Invalid item found in cart:', item);
-        }
+       
       }
   
       console.log('All items reserved successfully');
+      clearCart(); 
+      setCheckoutSuccess(true); 
     } catch (error) {
       console.error('Error reserving items:', error.message);
     }
   };
+
+  if (checkoutSuccess) {
+    return (
+      <div className="checkout-success">
+        <h2>Your Reservation Was Successful!</h2>
+        <p>Your item(s) are reserved, you will receive an email with your order confirmation and pick up code. You can now return home to view any other products you may be interested in.</p>
+        <div className="home-button-container">
+        <button onClick={() => window.location.href = '/'} className="home-button">Return to Home</button>
+      </div>
+    </div>
+    );
+  }
+
 
   return (
     <div className="main-container">
@@ -81,8 +72,6 @@ const Cart = () => {
                 <div className="cart-item-details">
                   <div>Title: {item.title}</div>
                   <div>Genre: {item.genre}</div>
-                  {item.type === 'book' && <div>Author: {item.author}</div>}
-                  {item.type === 'movie' && <div>Director: {item.director}</div>}
                 </div>
                 <button onClick={() => handleRemoveFromCart(item.id)} className="cart-item-remove">
                   Remove
@@ -111,7 +100,6 @@ const Cart = () => {
 };
 
 export default Cart;
-
 
 
 

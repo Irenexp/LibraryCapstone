@@ -13,4 +13,5 @@ public class ReserveDTO {
     private String  title;
     private long userId;
     private String date;
+    private String imgUrl;
 }

@@ -28,6 +28,8 @@
   width: 98%; /* Make button width fill the container */
   min-height: 40px;
   text-align: left;
+  font-family: 'Raleway';
+  font-weight: 900;
 }
 
 /* Drop down menu after selecting a filter */
@@ -39,6 +41,10 @@
 .author-drpdw .dropdown-toggle:focus {
   background-color: #a4a4e2 !important;
   box-sizing: border-box;
+  min-height: 40px;
+  text-align: left;
+  font-family: 'Raleway'
+  
 
 }
 
@@ -64,6 +70,8 @@
   text-decoration: underline;
   color: #000000;
   padding-bottom: 5px;
+  font-family: 'Raleway';
+  font-style: normal;
 }
 
 .books-container {
@@ -96,8 +104,11 @@
   padding-top: 10px;
   padding-bottom: 10px;
   text-decoration: underline;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-size: 20pt;
+  font-weight: 700;
 }
-
 
 
 @media (max-width: 768px) {
