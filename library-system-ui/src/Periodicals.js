@@ -21,13 +21,10 @@ const Periodicals = () => {
           url = `http://localhost:8080/periodicals/type?type=${periodicalTypeFilter}`;
         }
 
-        // if (periodicalNameFilter) {
-        //   url.pathname += "/name";
-        //   url.searchParams.append("periodicalName", periodicalNameFilter);
-        // }
         const response = await fetch(url);
 
         const data = await response.json();
+
         setPeriodicalList(data);
         setLoading(false);
       } catch (error) {
@@ -37,6 +34,7 @@ const Periodicals = () => {
     fetchData();
   }, [periodicalNameFilter, periodicalTypeFilter]);
 
+  console.log("data", periodicalList);
   return (
     <div className="main-container">
       <div className="filter-container">

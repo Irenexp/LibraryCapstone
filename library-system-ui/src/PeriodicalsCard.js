@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
@@ -38,6 +39,8 @@ const ViewButton = styled.button`
 `;
 
 const PeriodicalsCard = ({ periodical }) => {
+  const navigate = useNavigate();
+
   return (
     <CardContainer>
       <BookImage src={periodical.imgUrl} />
@@ -49,7 +52,15 @@ const PeriodicalsCard = ({ periodical }) => {
       </PublicationDate>
 
       <br></br>
-      <ViewButton>ViewButton</ViewButton>
+      <ViewButton
+        onClick={() =>
+          navigate(`/pdfViewer`, {
+            state: { pdfUrl: periodical.pdfUrl },
+          })
+        }
+      >
+        ViewButton
+      </ViewButton>
     </CardContainer>
   );
 };
