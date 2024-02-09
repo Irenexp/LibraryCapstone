@@ -22,19 +22,11 @@ public class AddToCartStepdefs {
     WebDriver driver;
     private String itemName;
 
-    @Before
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
 
     @Given("I am on the book page")
     public void iAmOnTheBookPage() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
         driver.get("http://localhost:3000/books");
     }
 
@@ -58,5 +50,11 @@ public class AddToCartStepdefs {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(.,'" + itemName + "')]")));
         assertTrue(driver.findElement(By.xpath("//div[contains(.,'" + itemName + "')]")).isDisplayed());
+    }
+
+    @Then("I close the browser")
+    public void iCloseTheBrowser() {
+        driver.close();
+        driver.quit();
     }
 }

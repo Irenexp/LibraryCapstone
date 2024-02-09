@@ -25,43 +25,6 @@ public class JsonStepdefs {
 
     WebDriver driver;
 
-    @Before
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-    }
-
-//    @Given("I have a response string containing JSON from endpoint {string}")
-//    public void iHaveAResponseStringContainingJSONFromEndpoint(String urlString) {
-//        driver.get(urlString);
-//        try {
-//            URL url = new URL(urlString);
-//            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//
-//            connection.setRequestMethod("GET");
-//
-//            int responseCode = connection.getResponseCode();
-//            if (responseCode == HttpURLConnection.HTTP_OK) {
-//                // Read response
-//                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
-//                StringBuilder response = new StringBuilder();
-//                String line;
-//                while ((line = reader.readLine()) != null) {
-//                    response.append(line);
-//                }
-//                reader.close();
-//
-//            } else {
-//                System.out.println("GET request not worked");
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-////        }
-//    }
-
-//        string = "[{\"id\":3,\"title\":\"The Great Gatsby\",\"genre\":\"ROMANCE\",\"quantity\":30,\"available\":true}]";
-
-
     @When("I want to check if it's a valid JSON")
     public void iWantToCheckIfItSAValidJSON() {
         try {

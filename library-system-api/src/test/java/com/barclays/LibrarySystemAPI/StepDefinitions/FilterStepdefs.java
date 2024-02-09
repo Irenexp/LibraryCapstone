@@ -29,18 +29,10 @@ public class FilterStepdefs {
 
     WebDriver driver;
 
-    @Before
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-    }
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
-
     @Given("I am on the Books page at {string}")
     public void iAmOnTheBooksPageAt(String url) {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
         driver.get(url);
     }
 

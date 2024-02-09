@@ -4,6 +4,7 @@ Feature: Add to Cart Functionality
     Given I am on the book page
     When I add a book to the cart
     Then I should see the book in the cart
+    Then I close the browser
 
     Examples:
       | item                |

@@ -6,7 +6,8 @@ Feature: HomeNavigation
     Then I close the page
 
   Scenario Outline: More Navigation tests
-    Given I have a website open to "http://localhost:3000/"
+    Given I have a website open
+    When I navigate to "http://localhost:3000/"
     When Find the element by id <element_id>
     Then I close the page
 

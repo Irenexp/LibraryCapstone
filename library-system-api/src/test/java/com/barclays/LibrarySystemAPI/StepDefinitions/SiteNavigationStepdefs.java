@@ -20,14 +20,9 @@ public class SiteNavigationStepdefs {
 
     WebDriver driver;
 
-    @Before
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-    }
-
     @Given("I have a website open")
     public void iHaveAWebsiteOpen() {
+        WebDriverManager.chromedriver().setup();
         WebDriverManager.chromedriver().driverVersion("121.0.6167.140").setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -58,10 +53,6 @@ public class SiteNavigationStepdefs {
         element.click();
     }
 
-    @Given("I have a website open to {string}")
-    public void iHaveAWebsiteOpenTo(String url2) {
-        driver.get(url2);
-    }
 }
 
 
