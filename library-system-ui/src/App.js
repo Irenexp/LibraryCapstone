@@ -101,7 +101,7 @@ const SearchBar = () => {
 };
 
 const UserAccount = () => {
-  return <div className="user-account">Andrew Swinney</div>;
+  return <div className="user-account">Taylor Swift</div>;
 };
 
 const MainContent = () => {

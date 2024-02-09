@@ -45,7 +45,7 @@ const Cart = () => {
           const reservationDto = {
             itemType: item.type.toUpperCase(),
             title: item.title,
-            userId: 1,
+            userId: 3,
             date: new Date().toISOString(),
           };
  
