@@ -10,6 +10,7 @@ const Periodicals = () => {
   const [periodicalTypeFilter, setPeriodicalTypeFilter] = useState();
   const resetFilters = () => {
     setPeriodicalNameFilter("");
+    setPeriodicalTypeFilter("");
   };
   const backgroundImageUrl =
     process.env.PUBLIC_URL + "capstone_library_image.jpg";
