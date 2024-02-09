@@ -10,18 +10,14 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PeriodicalRepository  extends CrudRepository<Periodical, Long> {
+public interface PeriodicalRepository extends CrudRepository<Periodical, Long> {
 
   @Query("SELECT new Periodical (p.id, p.periodicalName, p.publicationDate,p.type, p.imgUrl,p.pdfUrl) FROM Periodical  p WHERE p.periodicalName LIKE %:periodicalName%")
-   List<Periodical> findPeriodicalByPeriodicalName(String periodicalName );
+  List<Periodical> findPeriodicalByPeriodicalName(String periodicalName);
 
+  List<Periodical> findAll();
 
-    List<Periodical> findAll();
-
-
-    @Query("SELECT new Periodical (p.id, p.periodicalName, p.publicationDate,p.type, p.imgUrl,p.pdfUrl) FROM Periodical  p WHERE p.type LIKE %:type%")
-    List<Periodical> findPeriodicalByType(String type );
-
-
+  @Query("SELECT new Periodical (p.id, p.periodicalName, p.publicationDate,p.type, p.imgUrl,p.pdfUrl) FROM Periodical  p WHERE p.type LIKE %:type%")
+  List<Periodical> findPeriodicalByType(String type);
 
 }

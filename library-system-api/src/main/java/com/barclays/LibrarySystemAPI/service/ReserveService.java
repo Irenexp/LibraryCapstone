@@ -1,7 +1,7 @@
 package com.barclays.LibrarySystemAPI.service;
 
-import com.barclays.LibrarySystemAPI.dto.ReserveDTO;
 import com.barclays.LibrarySystemAPI.model.ReservedItem;
+import com.barclays.LibrarySystemAPI.dto.ReserveDTO;
 
 import java.util.List;
 

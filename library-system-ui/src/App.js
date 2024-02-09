@@ -41,14 +41,22 @@ const NavBar = () => {
     <div className="navbar">
       <div className="logo">Library</div>
       <div className="nav-items">
-        <Link to="/">Home</Link>
-        <Link to="/books">Books</Link>
-        <Link to="/movies">Movies</Link>
-        <Link to="/periodicals">Periodicals</Link>
+        <Link to="/" id="home-link">
+          Home
+        </Link>
+        <Link to="/books" id="books-link">
+          Books
+        </Link>
+        <Link to="/movies" id="movies-link">
+          Movies
+        </Link>
+        <Link to="/periodicals" id="periodicals-link">
+          Periodicals
+        </Link>
       </div>
       <SearchBar />
       <UserAccount />
-      <Link to="/cart">
+      <Link to="/cart" id="cart-link">
         <img src="cart-icon.png" alt="Cart" className="cart-icon" />
       </Link>
     </div>

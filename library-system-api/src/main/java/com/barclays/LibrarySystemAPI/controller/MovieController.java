@@ -1,15 +1,12 @@
 package com.barclays.LibrarySystemAPI.controller;
 
-import com.barclays.LibrarySystemAPI.model.Book;
 import com.barclays.LibrarySystemAPI.model.Genre;
 import com.barclays.LibrarySystemAPI.model.Movie;
 import com.barclays.LibrarySystemAPI.service.MovieService;
-import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

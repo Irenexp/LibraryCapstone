@@ -1,9 +1,8 @@
 package com.barclays.LibrarySystemAPI.controller;
 
+import com.barclays.LibrarySystemAPI.service.UserService;
 import com.barclays.LibrarySystemAPI.dto.UserRequestDTO;
 import com.barclays.LibrarySystemAPI.model.User;
-import com.barclays.LibrarySystemAPI.repository.UserRepository;
-import com.barclays.LibrarySystemAPI.service.UserService;
 import io.micrometer.common.util.StringUtils;
 import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;

@@ -1,8 +1,8 @@
 package com.barclays.LibrarySystemAPI.controller;
 
-import com.barclays.LibrarySystemAPI.model.Book;
 import com.barclays.LibrarySystemAPI.model.Genre;
 import com.barclays.LibrarySystemAPI.service.BookService;
+import com.barclays.LibrarySystemAPI.model.Book;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
