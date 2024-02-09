@@ -22,6 +22,14 @@
   color: #61dafb;
 }
 
+.logo{
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 42px;
+}
+
 
 .content-container {
   display: flex;
@@ -36,6 +44,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start; /* Align text to the left */
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 42px;
 }
 
 .library-image {
@@ -80,6 +93,11 @@
   color: white;
   padding: 10px;
   text-decoration: none;
+  font-family: 'Raleway';
+   font-style: normal;
+   font-weight: 100;
+    font-size: 20px;
+    line-height: 30px;
 }
 
 .search-bar input {
@@ -92,6 +110,11 @@
 
 .user-account {
   padding: 10px;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 90;
+  font-size: 16px;
+  line-height: 42px;
 }
 
 .main-content h1 {

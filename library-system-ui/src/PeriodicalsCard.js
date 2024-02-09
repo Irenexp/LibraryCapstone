@@ -3,13 +3,15 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
-  width: 35%;
+  width: 30%;
   margin: 40px;
   display: flex;
   flex-direction: column;
   border: 1px solid black;
   border-radius: 5px;
   padding: 5px;
+  background-color: #15182e; /* Dark blue background */
+  color: white; /* White text */
 `;
 
 const Description = styled.div`
@@ -33,9 +35,17 @@ const ViewButton = styled.button`
   text-align: center;
   background-color: #f0f0f0;
   color: #333;
-  border: 3px solid #15182e;
+  border: none; /* Remove border or set it to transparent if preferred */
   padding: 8px 16px;
   border-radius: 5px;
+  cursor: pointer; /* Change cursor to pointer to indicate button */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  font-family: "Raleway";
+  font-style: normal;
+  &:hover {
+    background-color: #1f4f96; /* Slightly lighter blue on hover */
+    color: white; /* Text color remains white */
+  }
 `;
 
 const PeriodicalsCard = ({ periodical }) => {

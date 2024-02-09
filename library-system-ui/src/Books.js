@@ -4,7 +4,7 @@ import BooksCard from "./BookCard";
 import React, { useEffect, useState } from "react";
 
 
-const Filter = ({ setAvailabilityFilter, setGenreFilter, setAuthorFilter }) => {
+const Filter = ({ setAvailabilityFilter, setGenreFilter, setAuthorFilter, resetFilters}) => {
   return (
     <div>
       <div>
@@ -16,6 +16,7 @@ const Filter = ({ setAvailabilityFilter, setGenreFilter, setAuthorFilter }) => {
       <div>
         <Author setAuthorFilter={setAuthorFilter} />
       </div>
+      <div><button className="reset-filters-btn" onClick={resetFilters}>Reset Filters</button></div>
     </div>
   );
 };
@@ -27,6 +28,13 @@ const Books = () => {
   const [availabilityFilter, setAvailabilityFilter] = useState();
   const [genreFilter, setGenreFilter] = useState();
   const [authorFilter, setAuthorFilter] = useState();
+  const resetFilters = () => {
+    setAvailabilityFilter('');
+    setGenreFilter('');
+    setAuthorFilter('');
+ };
+
+  const backgroundImageUrl = process.env.PUBLIC_URL + 'capstone_library_image.jpg'; 
 
 
   useEffect(() => {
@@ -59,14 +67,22 @@ const Books = () => {
   return (
     <div className="main-container">
       <div className="filter-container">
-        <h5 className = "filter"> Filters</h5>
+        {/* Filter UI */}
+        <h5 className="filter">Filters</h5>
         <Filter 
-        setAvailabilityFilter={setAvailabilityFilter}
-        setGenreFilter={setGenreFilter}
-        setAuthorFilter={setAuthorFilter}/>
+          setAvailabilityFilter={setAvailabilityFilter}
+          setGenreFilter={setGenreFilter}
+          setAuthorFilter={setAuthorFilter}
+          resetFilters={resetFilters}
+        />
       </div>
-      <div className="books-container">
-      <h2 className="books-title">Books</h2>
+      <div className="books-container" style={{
+        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${backgroundImageUrl})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}>
+        <h2 className="books-title">Books</h2>
         {loading ? (
           <p>Loading...</p>
         ) : (
@@ -79,7 +95,7 @@ const Books = () => {
       </div>
     </div>
   );
-}
+};
 
 
 const Availability = ({ setAvailabilityFilter }) => {

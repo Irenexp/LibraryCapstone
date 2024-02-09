@@ -1,0 +1,129 @@
+/* Cart.css */
+
+.main-container {
+    display: flex;
+    flex-wrap: nowrap; /* Keep this as nowrap to ensure side-by-side layout */
+  }
+  
+  .books-container {
+    flex: 1;
+    height: calc(100vh - 20px); /* Adjust if you have a header */
+    overflow-y: auto; /* Scrollable container for cart items */
+    padding: 20px;
+    padding-bottom: 15vh;
+  }
+  
+  .books-title {
+    font-size: 2rem;
+    text-decoration: underline;
+    color: #000000;
+    padding-bottom: 5px;
+  }
+  
+  .books-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 0 auto; /* Center items horizontally */
+  }
+  
+  .cart-item-container {
+    width: calc(31.33% - 12px); /* Subtract the gap from the total width */
+    margin: 10px; /* Adjust margin to your preference */
+    /* Other styles for the cart item */
+  }
+  
+  .cart-item-container img {
+    width: 40%; /* Full width of the cart item */
+    height: 15vh; /* Maintain aspect ratio */
+  }
+  
+  .cart-item-details {
+    padding: 10px; /* Add padding to the details section */
+  }
+  
+  .cart-item-remove {
+    background-color: #dc3545; /* Red background for remove button */
+    color: #fff; /* White text color for contrast */
+    border: none; /* Remove border */
+    padding: 8px 16px; /* Add padding to the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Add pointer cursor */
+  }
+  
+  .filter-container {
+    flex: 0 0 20%;
+    height: calc(100vh - 20px);
+    overflow-y: auto;
+    border: 1px solid #d3d3d3; /* Light grey border added here */
+    
+  }
+
+  .success-bubble {
+    position: fixed;
+    top: 65px; 
+    left: 20px;
+    background-color: #444141;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    z-index: 999; 
+  }
+
+  .checkout-button {
+    background-color: #131528; 
+    color: white; 
+    margin-top: 10px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-size:12pt;
+  }
+
+.checkout-success {
+    text-align: center;
+    padding: 20px;
+    background-color: #1e1326; 
+    color: #f6f4f7; 
+    border-radius: 5px;
+    margin: 20px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+  }
+  
+  .home-button {
+    background-color: #e5e6f0; 
+    color: rgb(38, 33, 33);
+    padding: 10px 20px;
+    margin: 20px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Raleway';
+    font-style: normal;
+  }
+  
+  .home-button:hover {
+    background-color: #a98cd7;
+  }
+  
+  .cart-summary{
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 100;
+    font-size: 20px;
+    line-height: 30px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  

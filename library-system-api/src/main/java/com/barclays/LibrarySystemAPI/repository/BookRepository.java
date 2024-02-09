@@ -7,19 +7,18 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Repository
 public interface BookRepository extends CrudRepository<Book, Long> {
 
-   @Query("SELECT new Book (b.id, b.title, b.imgUrl,b.author,b.genre,b.quantity, b.isAvailable) FROM Book b WHERE b.title LIKE %:title%")
-    List<Book> findByTitle( String title);
+   @Query("SELECT new Book (b.id, b.title, b.imgUrl, b.author,b.genre,b.quantity, b.isAvailable) FROM Book b WHERE b.title LIKE %:title%")
+   List<Book> findByTitle(String title);
 
+   List<Book> findAll();
 
+   List<Book> searchByAuthorNameContaining(String authorName);
 
-    List<Book> findAll();
-
-    List<Book> searchByAuthorNameContaining(String authorName);
-    List<Book> searchBookByGenre(Genre genre);
-
+   List<Book> searchBookByGenre(Genre genre);
 
    List<Book> searchByIsAvailable(boolean isAvailable);
 }

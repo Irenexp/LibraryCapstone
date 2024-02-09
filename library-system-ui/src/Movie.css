@@ -22,7 +22,7 @@
   .availability-drpdw .dropdown-toggle,
   .genre-drpdw .dropdown-toggle,
   .director-drpdw .dropdown-toggle,
-  .rating-drpdw .dropdown-toggle {
+  .rating-drpdw .dropdown-toggle{
     margin-bottom: 10px;
     background-color: #0d0d49 !important; /* Dark blue background */
     border: 1px solid #25254b !important; /* Dark blue border */
@@ -30,13 +30,25 @@
     min-height: 40px;
     text-align: left;
   }
+
+  .rating-drpdw{
+    text-align: left;
+    font-family: 'Raleway';
+    font-weight: 900;
+  }
+
+  .director-drpdw{
+    min-height: 40px;
+    text-align: left;
+    font-family: 'Raleway';
+    font-weight: 900;
+  }
   
 
   .availability-drpdw .dropdown-toggle:hover,
   .genre-drpdw .dropdown-toggle:hover,
   .director-drpdw .dropdown-toggle:hover,
   .rating-drpdw .dropdown-toggle:hover,
- 
   .availability-drpdw .dropdown-toggle:focus,
   .genre-drpdw .dropdown-toggle:focus,
   .director-drpdw .dropdown-toggle:focus
@@ -101,6 +113,19 @@
     padding-bottom: 10px;
     text-decoration: underline;
   }
+
+  .reset-filters-btn {
+    margin: 10px 0;
+    padding: 5px 10px;
+    background-color: #494e49; /* Green */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: left;
+   font-family: 'Raleway';
+   font-weight: 900;
+}
   
   
   

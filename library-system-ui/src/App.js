@@ -5,29 +5,37 @@ import Books from "./Books";
 import Movies from "./Movies";
 import Periodicals from "./Periodicals";
 import Cart from "./Cart";
+import { CartProvider } from "./CartContext";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PeriodicalPdf from "./PeriodicalPdf";
 
 const App = () => {
   return (
-    <div className="App">
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<MainContent />} /> // Home route shows
-        MainContent
-        <Route path="/books" element={<Books />} /> // Books route
-        <Route path="/movies" element={<Movies />} /> // Movies route
-        <Route path="/periodicals" element={<Periodicals />} /> // Periodicals
-        route
-        <Route path="/cart" element={<Cart />} /> // Cart route
-        <Route path="/pdfViewer" element={<PeriodicalPdf />} /> //periodical pdf
-        viewer
-      </Routes>
-      <Footer />
-    </div>
+    <CartProvider>
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<MainContent />} />
+          {/* Home route shows
+        MainContent */}
+          <Route path="/books" element={<Books />} />
+          {/* Books route */}
+          <Route path="/movies" element={<Movies />} />
+          {/* Movies route */}
+          <Route path="/periodicals" element={<Periodicals />} />
+          {/* Periodicals
+        route */}
+          <Route path="/cart" element={<Cart />} />
+          {/* Cart route */}
+          <Route path="/pdfViewer" element={<PeriodicalPdf />} /> //periodical
+          pdf viewer
+        </Routes>
+        <Footer />
+      </div>
+    </CartProvider>
   );
 };
-
 const NavBar = () => {
   return (
     <div className="navbar">
@@ -48,11 +56,39 @@ const NavBar = () => {
 };
 
 const SearchBar = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value.toLowerCase());
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent the form from submitting in the traditional way
+
+    if (searchTerm === "books") {
+      navigate("/books");
+    } else if (searchTerm === "movies") {
+      navigate("/movies");
+    } else if (searchTerm === "periodicals") {
+      navigate("/periodicals");
+    } else {
+      alert('Please search for "books", "movies", or "periodicals"');
+    }
+
+    setSearchTerm(""); // Reset the search term
+  };
+
   return (
-    <div className="search-bar">
-      <input type="text" placeholder="Search" />
+    <form className="search-bar" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={handleChange}
+      />
       <button type="submit">🔍</button>
-    </div>
+    </form>
   );
 };
 
@@ -66,7 +102,7 @@ const MainContent = () => {
   return (
     <div className="content-container">
       <div className="welcome-text">
-        <h1>Welcome to Opps Library</h1>
+        <p>Welcome to Opps Library</p>
         <p>From the library, you can borrow books and movies.</p>
       </div>
       <div className="library-image">

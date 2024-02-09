@@ -10,11 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReserveDTO {
     private ItemType itemType;
-    private String  title;
+    private String title;
     private long userId;
     private String date;
     private String imgUrl;
-
-
-
 }
