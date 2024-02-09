@@ -35,8 +35,6 @@ class BookTestWithMockHttpRequest {
     @Autowired
     MockMvc mockMvc;
 
-
-
     ObjectMapper mapper =new ObjectMapper();
     ResultActions resultActions;
 
@@ -166,7 +164,5 @@ class BookTestWithMockHttpRequest {
         );
     }
 
-//    @Test
-//    void deleteBook() {
-//    }
+
 }

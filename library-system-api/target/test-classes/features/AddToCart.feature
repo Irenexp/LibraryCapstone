@@ -9,4 +9,3 @@ Feature: Add to Cart Functionality
     Examples:
       | item                |
       | To Kill a Mockingbird |
-#      | The Shawshank Redemption |

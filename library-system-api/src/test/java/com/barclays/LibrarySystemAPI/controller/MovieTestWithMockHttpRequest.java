@@ -34,7 +34,6 @@ class MovieTestWithMockHttpRequest {
     @Autowired
     MockMvc mockMvc;
 
-
     ObjectMapper mapper =new ObjectMapper();
     ResultActions resultActions;
 
@@ -103,8 +102,6 @@ class MovieTestWithMockHttpRequest {
         assertAll("Testing from mySQL Database",
                 () -> assertEquals(expectedLength, movies.length),
                 () -> assertEquals("Titanic", movies[0].getTitle()));
-
-
 
     }
 
